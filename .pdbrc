@@ -1,0 +1,9 @@
+# -*- encoding: utf-8 -*-
+"""
+Enable tab completion in pdb.
+
+"""
+import pdb
+import rlcompleter
+
+pdb.Pdb.complete = rlcompleter.Completer(locals()).complete

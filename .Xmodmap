@@ -1,0 +1,4 @@
+remove lock = Caps_Lock
+keycode 66 = BackSpace
+keycode 118 = Delete
+keycode 90 = KP_0

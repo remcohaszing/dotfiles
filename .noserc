@@ -1,0 +1,4 @@
+[nosetests]
+with-yanc = true
+logging-level = INFO
+
