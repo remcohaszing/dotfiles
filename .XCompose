@@ -38,6 +38,7 @@ include "%L"
 <Multi_key> <greater> <equal>           : "😾"       # > 3 pouting cat face
 <Multi_key> <equal> <parenleft>         : "😿"       # = ( crying cat face
 <Multi_key> <D> <equal>                 : "🙀"       # D = weary cat face
+<Multi_key> <p> <p>                     : "🎃"       # p p pumpkin
 
 # Other
 <Multi_key <v> <v>                      : "⛧"
