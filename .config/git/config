@@ -11,6 +11,7 @@
     whitespace = cr-at-eol,tab-in-indent,trailing-space
     pager = less -x 5,9,13,17,21,25,29,33,37,41
     excludesfile = ~/.config/git/ignore
+    attributesfile = ~/.config/git/attributes
 [color]
     branch = auto
     diff = auto
@@ -30,3 +31,5 @@
     defaultToUpstream = true
 [clone]
     recurse-submodules = true
+[diff "image"]
+    command = ~/.config/git/bin/imgdiff

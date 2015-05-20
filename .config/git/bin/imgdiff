@@ -1,0 +1,16 @@
+#!/bin/sh
+
+gm compare \
+    -file - \
+    "$2" "$1" \
+    png:- | \
+gm montage \
+    -gravity North \
+    -borderwidth 1 \
+    -bordercolor '#00ff00' \
+    -texture "$HOME/Pictures/gitdiff-bg.png" \
+    -geometry +4+4 \
+    "$2" - "$1" \
+    png:- | \
+gm display -title "$1" -
+
