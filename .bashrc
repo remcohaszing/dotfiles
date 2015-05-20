@@ -120,7 +120,7 @@ for f in $ANDROID_SDK/build-tools/*; do
 done
 unset f
 unset ANDROID_SDK
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 # GCloud
 source /home/remco/.local/share/google-cloud-sdk/path.bash.inc
