@@ -89,7 +89,7 @@ export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/path
 venv () {
   VENV=/tmp/$RANDOM
-  virtualenv --prompt="(venv)" --extra-search-dir="$HOME/.cache/wheelhouse" "$@" $VENV
+  virtualenv --prompt="(venv)" "$@" $VENV
   source $VENV/bin/activate
   unset VENV
   PYLIBS="cython flake8 nose wheel yanc"
