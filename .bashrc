@@ -81,6 +81,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+export PATH=$PATH:$HOME/.local/bin
+for f in $HOME/.local/bash_completion.d/*; do
+  source "$f"
+done
+
 # Used by tools that use select-editor
 export SELECTED_EDITOR=vim
 
@@ -88,16 +94,15 @@ export SELECTED_EDITOR=vim
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/path
 venv () {
-  VENV=/tmp/$RANDOM
+  VENV=/tmp/venv-$RANDOM
   virtualenv --prompt="(venv)" "$@" $VENV
   source $VENV/bin/activate
   unset VENV
-  PYLIBS="cython flake8 nose wheel yanc"
+  PYLIBS="cython flake8 nose yanc"
   echo -n Installing "${PYLIBS// /, }"...
   # shellcheck disable=SC2086
-  pip install $PYLIBS --quiet --no-index
+  pip install $PYLIBS --quiet
   unset PYLIBS
-  . <(pip completion --bash)
   echo done.
 }
 dvenv () {
@@ -108,18 +113,20 @@ dvenv () {
 }
 
 # Some manual completion
-. <(npm completion)
-source /usr/lib/node_modules/cordova/scripts/cordova.completion
+source /usr/share/doc/tmux/examples/bash_completion_tmux.sh
+source <(pip completion --bash)
+source <(npm completion)
+source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scripts/cordova.completion
+source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash
+source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash
 
 # Android
-ANDROID_SDK=$HOME/.local/share/android-sdk-linux
-export PATH=$PATH:$ANDROID_SDK/tools
-export PATH=$PATH:$ANDROID_SDK/platform-tools
-for f in $ANDROID_SDK/build-tools/*; do
+ANDROID_HOME=$HOME/.local/share/android-sdk-linux
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+for f in $ANDROID_HOME/build-tools/*; do
   export PATH=$PATH:$f
 done
-unset f
-unset ANDROID_SDK
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 # GCloud
