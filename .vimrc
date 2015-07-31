@@ -1,6 +1,6 @@
 set noswapfile
 set autoindent
-set number
+"set number
 set expandtab
 set tabstop=4
 set colorcolumn=80
