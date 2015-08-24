@@ -92,7 +92,6 @@ export SELECTED_EDITOR=vim
 
 # Python
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
-export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/path
 venv () {
   VENV=/tmp/venv-$RANDOM
   virtualenv --prompt="(venv)" "$@" $VENV
@@ -113,12 +112,15 @@ dvenv () {
 }
 
 # Some manual completion
-source /usr/share/doc/tmux/examples/bash_completion_tmux.sh
-source <(pip completion --bash)
-source <(npm completion)
-source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scripts/cordova.completion
-source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash
-source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash
+source /usr/share/doc/tmux/examples/bash_completion_tmux.sh 2> /dev/null
+source <(pip completion --bash) 2> /dev/null
+source <(npm completion) 2> /dev/null
+source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scripts/cordova.completion 2> /dev/null
+source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
+source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
+
+# NodeJS
+export PATH="$PATH:node_modules/.bin"
 
 # Android
 ANDROID_HOME=$HOME/.local/share/android-sdk-linux
@@ -130,6 +132,6 @@ done
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 # GCloud
-source /home/remco/.local/share/google-cloud-sdk/path.bash.inc
-source /home/remco/.local/share/google-cloud-sdk/completion.bash.inc
+source /home/remco/.local/share/google-cloud-sdk/path.bash.inc 2> /dev/null
+source /home/remco/.local/share/google-cloud-sdk/completion.bash.inc 2> /dev/null
 export MANPATH=$MANPATH:$HOME/.local/share/google-cloud-sdk/help/man
