@@ -86,9 +86,11 @@ fi
 
 
 export PATH=$PATH:$HOME/.local/bin
-for f in $HOME/.local/bash_completion.d/*; do
-  source "$f"
-done
+if [-d $HOME/.local/bash_completion ]; then
+  for f in $HOME/.local/bash_completion.d/*; do
+    source "$f"
+  done
+fi
 
 # Aliases for convenience
 # Reset the terminal scrollback and follow the contents of a file
