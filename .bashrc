@@ -89,6 +89,10 @@ for f in $HOME/.local/bash_completion.d/*; do
   source "$f"
 done
 
+# Aliases for convenience
+# Reset the terminal scrollback and follow the contents of a file
+alias follow='reset; tail -f -n +0'
+
 # Used by tools that use select-editor
 export SELECTED_EDITOR=vim
 
