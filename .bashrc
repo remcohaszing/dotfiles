@@ -103,12 +103,6 @@ venv () {
   virtualenv --prompt="(venv)" "$@" $VENV
   source $VENV/bin/activate
   unset VENV
-  PYLIBS="cython flake8 nose yanc"
-  echo -n Installing "${PYLIBS// /, }"...
-  # shellcheck disable=SC2086
-  pip install $PYLIBS --quiet
-  unset PYLIBS
-  echo done.
 }
 dvenv () {
   VENV=$VIRTUAL_ENV
