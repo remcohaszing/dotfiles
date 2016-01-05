@@ -112,7 +112,7 @@ dvenv () {
   unset VENV
 }
 
-if $(which thefuck); then
+if hash thefuck 2>/dev/null; then
   source <(thefuck --alias)
 fi
 
