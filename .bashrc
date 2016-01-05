@@ -112,6 +112,10 @@ dvenv () {
   unset VENV
 }
 
+if $(which thefuck); then
+  source <(thefuck --alias)
+fi
+
 # Some manual completion
 source /usr/share/doc/tmux/examples/bash_completion_tmux.sh 2> /dev/null
 source <(pip completion --bash) 2> /dev/null
