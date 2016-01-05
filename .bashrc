@@ -119,9 +119,6 @@ source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scr
 source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
 
-# NodeJS
-export PATH="$PATH:node_modules/.bin"
-
 # Android
 ANDROID_HOME=$HOME/.local/share/android-sdk-linux
 export PATH=$PATH:$ANDROID_HOME/tools
