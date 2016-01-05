@@ -130,6 +130,7 @@ done
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
 # GCloud
+export CLOUDSDK_PYTHON=python2.7
+export MANPATH=$MANPATH:$HOME/.local/share/google-cloud-sdk/help/man
 source /home/remco/.local/share/google-cloud-sdk/path.bash.inc 2> /dev/null
 source /home/remco/.local/share/google-cloud-sdk/completion.bash.inc 2> /dev/null
-export MANPATH=$MANPATH:$HOME/.local/share/google-cloud-sdk/help/man
