@@ -86,7 +86,7 @@ fi
 
 
 export PATH=$PATH:$HOME/.local/bin
-if [-d $HOME/.local/bash_completion ]; then
+if [ -d "$HOME/.local/bash_completion" ]; then
   for f in $HOME/.local/bash_completion.d/*; do
     source "$f"
   done
