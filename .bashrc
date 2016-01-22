@@ -141,7 +141,12 @@ fi
 for f in $ANDROID_HOME/build-tools/*; do
   export PATH=$PATH:$f
 done
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+if [ -x /usr/libexec/java_home ]; then
+  JAVA_HOME="$(/usr/libexec/java_home)"
+else
+  JAVA_HOME=/usr/lib/jvm/java-8-oracle
+fi
+export JAVA_HOME
 
 # GCloud
 export CLOUDSDK_PYTHON=python2.7
