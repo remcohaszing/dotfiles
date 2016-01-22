@@ -132,8 +132,12 @@ source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/com
 
 # Android
 ANDROID_HOME=$HOME/.local/share/android-sdk-linux
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+if [ -d "$ANDROID_HOME/tools" ]; then
+  export PATH=$PATH:$ANDROID_HOME/tools
+fi
+if [ -d "$ANDROID_HOME/platform-tools" ]; then
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+fi
 for f in $ANDROID_HOME/build-tools/*; do
   export PATH=$PATH:$f
 done
