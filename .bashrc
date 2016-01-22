@@ -65,7 +65,11 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-alias ls='ls --color=auto'
+if [ "$(uname)" == 'Darwin' ]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
