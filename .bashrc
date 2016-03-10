@@ -22,10 +22,6 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -43,11 +39,6 @@ case "$TERM" in
     xterm-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#color_prompt=yes
-
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " %s")\$ '
 else
@@ -63,6 +54,12 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+include() {
+  if hash "$1" 2> /dev/null; then
+    source <("$@")
+  fi
+}
 
 # enable color support of ls and also add handy aliases
 if [ "$(uname)" == 'Darwin' ]; then
@@ -89,8 +86,7 @@ if ! shopt -oq posix; then
 fi
 
 
-export PATH=$PATH:$HOME/.local/bin
-if [ -d "$HOME/.local/bash_completion" ]; then
+if [ -d "$HOME/.local/bash_completion.d" ]; then
   for f in $HOME/.local/bash_completion.d/*; do
     source "$f"
   done
@@ -105,56 +101,44 @@ export SELECTED_EDITOR=vim
 
 # Python
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
-venv () {
-  VENV=/tmp/venv-$RANDOM
-  virtualenv --prompt="(venv)" "$@" $VENV
-  source $VENV/bin/activate
-  unset VENV
-}
-dvenv () {
-  VENV=$VIRTUAL_ENV
-  deactivate
-  rm -rf "$VENV"
-  unset VENV
-}
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.cache/virtualenvwrapper
+VIRTUALENVWRAPPER_PYTHON="$(which python3)"
+export VIRTUALENVWRAPPER_PYTHON
+source "$(which virtualenvwrapper.sh)"
 
-if hash thefuck 2>/dev/null; then
-  source <(thefuck --alias)
-fi
+include thefuck --alias
 
 # Some manual completion
 source /usr/share/doc/tmux/examples/bash_completion_tmux.sh 2> /dev/null
-source <(pip completion --bash) 2> /dev/null
-source <(npm completion) 2> /dev/null
+#source <(pip completion --bash) 2> /dev/null
+include pip completion --bash
+include npm completion
 source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scripts/cordova.completion 2> /dev/null
 source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
 
 # Android
-ANDROID_HOME=$HOME/.local/share/android-sdk-linux
-if [ -d "$ANDROID_HOME/tools" ]; then
-  export PATH=$PATH:$ANDROID_HOME/tools
+if [ -d "$ANDROID_HOME/build-tools" ]; then
+  for f in $ANDROID_HOME/build-tools/*; do
+    export PATH=$f:$PATH
+  done
 fi
-if [ -d "$ANDROID_HOME/platform-tools" ]; then
-  export PATH=$PATH:$ANDROID_HOME/platform-tools
-fi
-for f in $ANDROID_HOME/build-tools/*; do
-  export PATH=$PATH:$f
-done
 if [ -x /usr/libexec/java_home ]; then
   JAVA_HOME="$(/usr/libexec/java_home)"
 else
-  JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 export JAVA_HOME
 
 # GCloud
 export CLOUDSDK_PYTHON=python2.7
-export MANPATH=$MANPATH:$HOME/.local/share/google-cloud-sdk/help/man
-source /home/remco/.local/share/google-cloud-sdk/path.bash.inc 2> /dev/null
-source /home/remco/.local/share/google-cloud-sdk/completion.bash.inc 2> /dev/null
+source "$HOME/.local/share/google-cloud-sdk/path.bash.inc" 2> /dev/null
+source "$HOME/.local/share/google-cloud-sdk/completion.bash.inc" 2> /dev/null
 
 # OSX specific configx
 if hash brew 2>/dev/null; then
   source "$(brew --prefix)/etc/bash_completion"
 fi
+
+unset include
