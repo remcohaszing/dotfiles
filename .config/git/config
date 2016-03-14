@@ -25,10 +25,12 @@
 [push]
     default = matching
 [alias]
-    l = log --graph --decorate
-    lb = log --graph --decorate --branches
+    l = log --graph --decorate --abbrev-commit
+    lb = log --graph --decorate --abbrev-commit --branches
+    wd = diff --word-diff=color
 [merge]
     defaultToUpstream = true
+    tool = meld
 [clone]
     recurse-submodules = true
 [diff "image"]
