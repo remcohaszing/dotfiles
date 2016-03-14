@@ -8,7 +8,7 @@ gm montage \
     -gravity North \
     -borderwidth 1 \
     -bordercolor '#00ff00' \
-    -texture "$HOME/Pictures/gitdiff-bg.png" \
+    -texture "$HOME/.config/git/imgdiff.png" \
     -geometry +4+4 \
     "$2" - "$1" \
     png:- | \
