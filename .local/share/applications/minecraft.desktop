@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Minecraft
+Comment=Minecraft is a game about breaking and placing blocks
+Exec=minecraft
+Terminal=false
+Type=Application
+Icon=minecraft
+StartupNotify=true
+Categories=Game;
