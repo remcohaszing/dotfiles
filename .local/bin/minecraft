@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# This script automatically downloads and runs a Minecraft client.
+#
+# To prevent cluttering the user's home directory, the workdir is
+# specified as close to the xdg basedir spec as possible.
+#
+# If running Xfce, this script makes sure the launcher uses the GTK look
+# and feel, because Java Swing can't do this by itself.
+#
+
+# Use XDG_DATA_HOME to store Minecraft data to prevent home dir cluttering.
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+if [ -z "$XDG_DATA_HOME" ]; then
+  XDG_DATA_HOME="$HOME/.local/share"
+fi
+# Use XDG_CACHE_HOME for logs to separate Java error logs from actual Minecraft files.
+if [ -z "$XDG_CACHE_HOME" ]; then
+  XDG_CACHE_HOME="$HOME/.cache"
+fi
+
+DIR="$XDG_DATA_HOME/minecraft"
+WORKDIR="$DIR/workdir"
+JAR="$DIR/Minecraft.jar"
+AMAZON_URL='https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar'
+LOG_DIR="$XDG_CACHE_HOME/minecraft"
+DOWNLOAD_CMD=(wget -O "$JAR" "$AMAZON_URL")
+MISSING_JAVA='No Java runtime environment installed'
+
+# Fancy GUI prompts. =D
+if ! hash java 2> /dev/null; then
+  if hash zenity 2> /dev/null; then
+    zenity --error --text "$MISSING_JAVA" 2> /dev/null
+  else
+    echo -e "\033[1;31m$MISSING_JAVA\033m"
+  fi
+  exit 1
+fi
+
+# Make sure the used directories exist.
+mkdir -p "$DIR"
+
+# Download the Minecraft jar if it doesn't exist.
+if [ ! -f "$JAR" ]; then
+  if hash zenity 2> /dev/null; then
+    "${DOWNLOAD_CMD[@]}" 2>&1 | \
+      # Fancy GUI progress bar kindly stolen from https://www.youtube.com/watch?v=hs_HdkIuKDI
+      sed -u "s/^ *[0-9]*K[ .]*\([0-9]*%\).*/\1/" | \
+      zenity --title='Downloading Minecraft' --text="Downloading Minecraft launcher…" --progress --auto-close --auto-kill 2> /dev/null
+  else
+    "${DOWNLOAD_CMD[@]}"
+  fi
+fi
+
+JVM_OPTS=($JVM_OPTS)
+# Specify error log location.
+JVM_OPTS+=(-XX:ErrorFile=$LOG_DIR/hs_err_pid%p.log)
+if [ "$XDG_CURRENT_DESKTOP" == 'XFCE' ]; then
+  # Enforce GTK look and feel, because Java swing doesn't seem to play nice with XFCE.
+  JVM_OPTS+=(-Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel)
+fi
+
+# Actually run the Minecraft jar.
+java "${JVM_OPTS[@]}" -jar "$DIR/Minecraft.jar" --workDir "$WORKDIR"
