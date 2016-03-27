@@ -87,8 +87,8 @@ if ! shopt -oq posix; then
 fi
 
 
-if [ -d "$HOME/.local/bash_completion.d" ]; then
-  for f in $HOME/.local/bash_completion.d/*; do
+if [ -d "$HOME/.local/etc/bash_completion.d" ]; then
+  for f in $HOME/.local/etc/bash_completion.d/*; do
     source "$f"
   done
 fi
