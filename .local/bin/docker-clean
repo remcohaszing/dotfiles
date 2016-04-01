@@ -65,6 +65,7 @@ def remove_containers(dry=True):
 
 
 def remove_images(dry=True):
+    running_ids = {c['ImageID'] for c in client.containers()}
     for img in client.images():
         id = img['Id']
         size = img['Size']
@@ -74,6 +75,10 @@ def remove_images(dry=True):
         args = dry, 'image', id, size, tag
         if not img['ParentId']:
             # Pulled image
+            log(*args, True)
+            continue
+        if img['Id'] in running_ids:
+            # Has running container instances
             log(*args, True)
             continue
         log(*args)
