@@ -103,7 +103,6 @@ export SELECTED_EDITOR=vim
 # Python
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
 # Virtualenvwrapper
-export WORKON_HOME=$HOME/.cache/virtualenvwrapper
 VIRTUALENVWRAPPER_PYTHON="$(which python3)"
 export VIRTUALENVWRAPPER_PYTHON
 source "$(which virtualenvwrapper.sh)"
@@ -115,6 +114,9 @@ source /usr/share/doc/tmux/examples/bash_completion_tmux.sh 2> /dev/null
 #source <(pip completion --bash) 2> /dev/null
 include pip completion --bash
 include npm completion
+if hash find_pycompletion.sh 2> /dev/null; then
+  source "$(find_pycompletion.sh)"
+fi
 source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scripts/cordova.completion 2> /dev/null
 source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
