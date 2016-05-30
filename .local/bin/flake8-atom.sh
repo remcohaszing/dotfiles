@@ -12,7 +12,11 @@ dir="$PWD"
 declare -A venvwrapper_venvs
 tox_venvs=(flake8 flake py35 py27)
 
-for venv in $HOME/.cache/virtualenvwrapper/*; do
+if [ -z "$WORKON_HOME" ]; then
+  WORKON_HOME=$HOME/.virtualenv
+fi
+
+for venv in $WORKON_HOME/*; do
   if [ -f "$venv/.project" ] && [ -x "$venv/bin/flake8" ]; then
     project="$(cat "$venv/.project")"
     venvwrapper_venvs[$project]="$venv/bin/flake8"
