@@ -25,8 +25,8 @@
 [push]
     default = matching
 [alias]
-    l = log --graph --decorate --abbrev-commit
-    lb = log --graph --decorate --abbrev-commit --branches
+    l = log --graph --decorate --pretty=short --abbrev-commit
+    lb = log --graph --decorate --pretty=short --abbrev-commit --branches
     wd = diff --word-diff=color
 [merge]
     defaultToUpstream = true
