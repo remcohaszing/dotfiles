@@ -25,11 +25,11 @@ def sizeof_fmt(num, format='{num:>6.1f} {unit:>3}'):
     return fmt(num=num, unit='YiB')
 
 
-client = docker.Client(**docker.utils.kwargs_from_env())
+client = docker.from_env()
 
 
 def strip_sha(string):
-    return re.sub(r'^sha256:([0-9a-f]{8})[0-9a-f]*', r'\g<1>', string)
+    return re.sub(r'^sha256:([0-9a-f]{8})[0-9a-f]*', r'\1', string)
 
 
 def log(dry, type, id, size, extra=None, skip=False):
