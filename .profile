@@ -21,3 +21,4 @@ fi
 
 export PATH
 export MOZ_USE_OMTC=1
+export WORKON_HOME=$HOME/.local/share/virtualenvs
