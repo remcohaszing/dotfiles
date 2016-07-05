@@ -12,6 +12,7 @@
     pager = less -x 5,9,13,17,21,25,29,33,37,41
     excludesfile = ~/.config/git/ignore
     attributesfile = ~/.config/git/attributes
+	editor = vim
 [color]
     branch = auto
     diff = auto
