@@ -12,7 +12,8 @@
     pager = less -x 5,9,13,17,21,25,29,33,37,41
     excludesfile = ~/.config/git/ignore
     attributesfile = ~/.config/git/attributes
-	editor = vim
+    editor = vim
+    compactionHeuristic = true
 [color]
     branch = auto
     diff = auto
@@ -23,6 +24,9 @@
     ui = auto
 [fetch]
     recurseSubmodules = true
+[pager]
+    diff = diff-so-fancy | less
+    show = diff-so-fancy | less
 [push]
     default = matching
 [alias]
