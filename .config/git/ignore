@@ -1,6 +1,9 @@
-Meld backups
+# Meld backups
 *.orig
 *_BACKUP_*.*
 *_BASE_*.*
 *_LOCAL_*.*
 *_REMOTE_*.*
+
+# travis logs
+*travis.log

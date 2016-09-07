@@ -27,6 +27,8 @@ highlight DiffText   cterm=bold ctermbg=12
 command Nose ! nosetests
 abbrev nose Nose
 
+au BufReadPost .eslintrc set filetype=yaml
+
 execute pathogen#infect()
 
 set statusline+=%#warningmsg#

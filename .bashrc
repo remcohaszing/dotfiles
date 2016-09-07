@@ -28,6 +28,8 @@ shopt -s checkwinsize
 
 # Disable less history
 export LESSHISTFILE="-"
+export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+export LESS=' -R '
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -121,6 +123,12 @@ source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scr
 source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
 
+# Ruby gems
+if [ -d "$HOME/.gem/ruby" ]; then
+  for f in $HOME/.gem/ruby/**; do
+    export PATH=$f/bin:$PATH
+  done
+fi
 # Android
 if [ -d "$ANDROID_HOME/build-tools" ]; then
   for f in $ANDROID_HOME/build-tools/*; do
@@ -145,3 +153,7 @@ if hash brew 2>/dev/null; then
 fi
 
 unset include
+
+if [ -f "$HOME/.travis/travis.sh" ]; then
+  source "$HOME/.travis/travis.sh"
+fi
