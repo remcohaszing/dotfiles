@@ -1,0 +1,106 @@
+@import "packages/file-icons/styles/colors";
+@import "packages/file-icons/styles/icons";
+
+// style the background color of the tree view
+.tree-view {
+  &::before {
+    height: 2em !important;
+  }
+  .project-root::before {
+     line-height: 2em !important;
+     height: 2em !important;
+  }
+  .header.list-item .name {
+    line-height: 2em !important;
+  }
+  @line-height: 1.5em;
+
+  .list-tree {
+    .list-item,
+    .list-item-nested {
+       line-height: @line-height !important;
+       height: @line-height !important;
+    }
+    .selected::before {
+      height: 1.5em !important;
+    }
+  }
+
+  .name[data-name="AppFile"]:before {
+    .medium-red;
+    .ruby-icon;
+  }
+
+  .name[data-name$=".apk"]:before {
+    .medium-green;
+    .android-icon;
+  }
+
+  .name[data-name$=".jks"]:before,
+  .name[data-name$=".keystore"]:before {
+    color: gray;
+    .java-icon;
+  }
+
+  .name[data-name$=".ipa"]:before {
+    .apple-icon;
+    color: white;
+  }
+
+  .name[data-name$=".js.map"]:before {
+    .database-icon;
+  }
+
+  .name[data-name$="requirements.txt"]:before {
+    .dark-orange;
+    .python-icon;
+  }
+}
+
+atom-pane.pane {
+  padding: 0;
+
+  ul.tab-bar {
+    line-height: 2em;
+    height: 2em;
+
+    .tab {
+      line-height: 2em;
+      height: 2em;
+
+      .close-icon {
+        line-height: 2em;
+        height: 2em;
+      }
+    }
+  }
+}
+
+.find-and-replace {
+  font-size: 0.8em;
+}
+
+atom-panel linter-panel {
+  padding: 0;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  background-color: black;
+}
+
+.editor, atom-text-editor::shadow {
+  .find-result .region {
+    // background-color: #00417e;
+    // border: 0;
+  }
+
+  .markup.underline.link.hyperlink {
+    color: #47caff;
+    text-decoration: underline;
+  }
+}
+
+// To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow .cursor {
+}

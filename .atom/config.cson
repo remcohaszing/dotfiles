@@ -1,0 +1,146 @@
+"*":
+  "atom-typescript": {}
+  "autocomplete-python":
+    extraPaths: "$PROJECT:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python2.7/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.4/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.5/site-packages"
+    pythonExecutable: "python3"
+  "bracket-matcher":
+    autocompleteBrackets: false
+    autocompleteSmartQuotes: false
+    wrapSelectionsInBrackets: false
+  core:
+    allowPendingPaneItems: false
+    audioBeep: false
+    autoHideMenuBar: true
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "linter-jshint"
+      "spell-check"
+      "linter-jscs"
+      "atom-html-preview"
+      "font-viewer"
+    ]
+    excludeVcsIgnoredPaths: false
+    ignoredNames: [
+      ".git"
+      "__pycache__"
+      "*.pyc"
+      "*.egg-info"
+      "*.min.js"
+      "*.min.css"
+      "*.orig"
+      "*.dist-info"
+    ]
+    projectHome: "/home/remco/d-centralize"
+    themes: [
+      "one-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    autoIndentOnPaste: false
+    fontSize: 10
+    invisibles:
+      eol: " "
+    lineHeight: 1.3
+    scrollPastEnd: true
+    showInvisibles: true
+    softWrap: true
+    tabLength: 4
+  "file-icons": {}
+  "file-templates": {}
+  "file-types":
+    "\\.cfg$": "source.ini"
+    "\\.js$": "source.js"
+    "\\.ngdoc$": "source.gfm"
+    "^AppFile$": "source.ruby"
+    "^Deliverfile$": "source.ruby"
+    "^Fastfile$": "source.ruby"
+    "^\\.coveragerc$": "source.ini"
+    "^\\.stylelintrc$": "source.yaml"
+  "git-hide":
+    hideOnStartup: false
+  "highlight-line":
+    enableBackgroundColor: false
+  "language-log":
+    showFilterBar: false
+  linter:
+    displayLinterStatus: false
+    errorPanelHeight: 215
+    ignoreMatchedFiles: "{**/*.min.*},*.md"
+    showErrorInline: false
+    showErrorTabFile: false
+    showErrorTabProject: false
+    statusIconScope: "File"
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
+    globalNodePath: "/usr"
+  "linter-flake8":
+    executablePath: "flake8-atom.sh"
+  "linter-htmlhint": {}
+  "linter-jscs":
+    onlyConfig: true
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
+  "linter-pep257": {}
+  "linter-pep8": {}
+  "linter-shellcheck": {}
+  "linter-stylelint":
+    disableWhenNoConfig: true
+    usePreset: false
+  "markdown-preview":
+    breakOnSingleNewline: true
+  "merge-conflicts": {}
+  "one-dark-ui":
+    layoutMode: "Compact"
+  pigments: {}
+  "remote-edit":
+    clearFileList: true
+  "rst-preview": {}
+  "spell-check": {}
+  "svg-preview": {}
+  tabs: {}
+  "terminal-plus":
+    core: {}
+    style: {}
+    toggles:
+      autoClose: true
+      runInsertedText: false
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".attribute-values.js.jsx.source":
+  editor:
+    tabLength: 4
+".console.python.text":
+  editor:
+    tabLength: 4
+".cython.source":
+  editor:
+    tabLength: 4
+".ini.source":
+  editor:
+    showIndentGuide: false
+    tabLength: 4
+".js.jsx.react.source":
+  editor:
+    tabLength: 4
+".js.jsx.source":
+  editor:
+    tabLength: 4
+".js.source.subtlegradient":
+  editor:
+    tabLength: 4
+".python.text.traceback":
+  editor:
+    tabLength: 4
+".restructuredtext.text":
+  editor:
+    tabLength: 4
+".source.ts":
+  editor:
+    tabLength: 4
+".source.tsx":
+  editor:
+    tabLength: 4
