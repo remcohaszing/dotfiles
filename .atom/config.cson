@@ -91,6 +91,8 @@
   "merge-conflicts": {}
   "one-dark-ui":
     layoutMode: "Compact"
+  "package-sync":
+    createOnChange: true
   pigments: {}
   "remote-edit":
     clearFileList: true
