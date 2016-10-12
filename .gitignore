@@ -2,5 +2,6 @@
 /.atom/.node-gyp/
 /.atom/blob-store/
 /.atom/compile-cache/
+/.atom/markdown-themeable-pdf/
 /.atom/nohup.out
 /.atom/packages/

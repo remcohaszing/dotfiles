@@ -13,11 +13,9 @@
     autoHideMenuBar: true
     destroyEmptyPanes: false
     disabledPackages: [
-      "linter-jshint"
       "spell-check"
-      "linter-jscs"
-      "atom-html-preview"
       "font-viewer"
+      "json-schema"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -55,6 +53,8 @@
     "^Deliverfile$": "source.ruby"
     "^Fastfile$": "source.ruby"
     "^\\.coveragerc$": "source.ini"
+    "^\\.eslintignore": "source.gitignore"
+    "^\\.stylelintignore": "source.gitignore"
     "^\\.stylelintrc$": "source.yaml"
   "git-hide":
     hideOnStartup: false
@@ -82,10 +82,12 @@
     disableWhenNoJshintrcFileInPath: true
   "linter-pep257": {}
   "linter-pep8": {}
+  "linter-ruby": {}
   "linter-shellcheck": {}
   "linter-stylelint":
     disableWhenNoConfig: true
     usePreset: false
+  "markdown-pdf": {}
   "markdown-preview":
     breakOnSingleNewline: true
   "merge-conflicts": {}
@@ -131,8 +133,15 @@
 ".js.jsx.source":
   editor:
     tabLength: 4
+".js.regexp.source":
+  editor:
+    tabLength: 4
 ".js.source.subtlegradient":
   editor:
+    tabLength: 4
+".json.source":
+  editor:
+    softWrap: false
     tabLength: 4
 ".python.text.traceback":
   editor:
@@ -142,6 +151,7 @@
     tabLength: 4
 ".source.ts":
   editor:
+    softWrap: false
     tabLength: 4
 ".source.tsx":
   editor:
