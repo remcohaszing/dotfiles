@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob
+
+if [ "$1" == '-h' ]; then
+  echo 'Install requirements files in this directory and any subdirectory in this virtualenv.'
+  exit 1
+fi
+
+BOLD='\e[1m'
+CYAN='\e[96m'
+RESET='\e[0m'
+
+requirements_files=(*requirements.txt */*requirements.txt)
+
+if [ ${#requirements_files[@]} == 0 ]; then
+  echo 'Could not find any requirements files.'
+else
+  echo 'Installing the following requirements files:'
+  printf "  $BOLD$CYAN%s$RESET\n" "${requirements_files[@]}"
+  pip install "${requirements_files[@]/#/-r}"
+fi

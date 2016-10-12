@@ -1,0 +1,99 @@
+#!/bin/bash
+
+HELP="Usage:
+  $0
+
+Automatically configure a display monitor setup.
+
+Arguments:
+  -h Show this help message
+"
+XRAND_COMMON_OPTS="\
+  --output DP1 --off \
+  --output HDMI1 --off \
+  --output VGA1 --off \
+  --output VIRTUAL1 --off"
+
+while getopts 'hw' opt; do
+  case $opt in
+    h|\?)
+      echo "$HELP"
+      exit 1
+      ;;
+  esac
+done
+
+
+change_panel() {
+  echo "Setting panel to $1"
+  xfconf-query \
+    --channel xfce4-panel \
+    --property /panels/panel-0/output-name \
+    --set "$1"
+}
+
+
+all=($(xrandr | awk '/connected/ {print $1}'))
+echo "All screens: ${all[*]}"
+screens=($(xrandr | awk '/ connected / {print $1}'))
+count=${#screens[@]}
+echo "$count screens conntected: ${screens[*]}"
+
+
+msg='Configured monitor'
+
+
+if [ "$count" == 1 ]; then
+  msg='Using single monitor setup'
+  xrandr $XRAND_COMMON_OPTS \
+    --output eDP1 \
+        --primary \
+        --mode 1920x1080 \
+        --pos 960x1080 \
+        --rotate normal \
+    --output HDMI3 --off \
+    --output HDMI2 --off \
+    --output DP2 --off
+  change_panel Monitor-1
+else
+  if [[ " ${screens[@]} " =~ HDMI3 ]]; then
+    msg='Using work setup'
+    xrandr $XRAND_COMMON_OPTS \
+      --output eDP1 \
+          --primary \
+          --mode 1920x1080 \
+          --pos 960x1080 \
+          --rotate normal \
+      --output HDMI3 \
+          --mode 1920x1080 \
+          --pos 0x0 \
+          --rotate normal \
+      --output HDMI2 \
+          --mode 1920x1080 \
+          --pos 1920x0 \
+          --rotate normal \
+      --output DP2 --off
+    change_panel monitor-1
+  else
+    msg='Using home setup'
+    xrandr $XRAND_COMMON_OPTS \
+      --output eDP1 \
+          --primary \
+          --mode 1920x1080 \
+          --pos 960x1080 \
+          --rotate normal \
+      --output DP2 \
+          --mode 1920x1080 \
+          --pos 0x0 \
+          --rotate normal \
+      --output HDMI2 \
+          --mode 1920x1080 \
+          --pos 1920x0 \
+          --rotate normal \
+      --output HDMI3 --off
+    change_panel monitor-1
+  fi
+fi
+
+echo "$msg"
+notify-send "$msg"
