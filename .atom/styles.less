@@ -6,60 +6,68 @@
   &::before {
     height: 2em !important;
   }
-  .project-root::before {
-     line-height: 2em !important;
-     height: 2em !important;
+
+  .project-root {
+    &::before {
+      line-height: 2em !important;
+      height: 2em !important;
+    }
+    &>.header.list-item .name {
+      line-height: 2em !important;
+
+      &[data-path^="/media"] {
+        color: #5599dd;
+      }
+    }
   }
-  .header.list-item .name {
-    line-height: 2em !important;
-  }
-  @line-height: 1.5em;
 
   .list-tree {
+    @line-height: 1.5em;
+
     .list-item,
     .list-item-nested {
        line-height: @line-height !important;
        height: @line-height !important;
     }
     .selected::before {
-      height: 1.5em !important;
+      height: @line-height !important;
     }
-  }
 
-  .name[data-name="AppFile"]:before {
-    .medium-red;
-    .ruby-icon;
-  }
+    .name[data-name="Appfile"]:before {
+      .ruby-icon;
+      .medium-red;
+    }
 
-  .name[data-name$=".apk"]:before {
-    .medium-green;
-    .android-icon;
-  }
+    .name[data-name$=".apk"]:before {
+      .android-icon;
+      .medium-green;
+    }
 
-  .name[data-name$=".jks"]:before,
-  .name[data-name$=".keystore"]:before {
-    color: gray;
-    .java-icon;
-  }
+    .name[data-name$=".jks"]:before,
+    .name[data-name$=".keystore"]:before {
+      .java-icon;
+      color: gray;
+    }
 
-  .name[data-name$=".ipa"]:before {
-    .apple-icon;
-    color: white;
-  }
+    .name[data-name$=".ipa"]:before {
+      .apple-icon;
+      color: white;
+    }
 
-  .name[data-name$=".js.map"]:before {
-    .database-icon;
-  }
+    .name[data-name$=".js.map"]:before {
+      .database-icon;
+    }
 
-  .name[data-name="tsconfig.json"]:before,
-  .name[data-name="tslint.json"]:before {
-    .dark-orange;
-    .ts-icon;
-  }
+    .name[data-name="tsconfig.json"]:before,
+    .name[data-name="tslint.json"]:before {
+      .ts-icon;
+      .dark-orange;
+    }
 
-  .name[data-name$="requirements.txt"]:before {
-    .dark-orange;
-    .python-icon;
+    .name[data-name$="requirements.txt"]:before {
+      .python-icon;
+      .dark-orange;
+    }
   }
 }
 
@@ -101,9 +109,27 @@ atom-text-editor {
     // border: 0;
   }
 
-  .markup.underline.link.hyperlink {
-    color: #47caff;
-    text-decoration: underline;
+  .markup {
+    &.underline.link.hyperlink {
+      color: #47caff;
+      text-decoration: underline;
+    }
+
+    &.bold {
+      font-weight: bold;
+    }
+
+    &.italic {
+      font-style: italic;
+    }
+
+    &.raw {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &.strike {
+      text-decoration: line-through;
+    }
   }
 }
 

@@ -1,4 +1,12 @@
 "*":
+  "atom-beautify":
+    java: {}
+    json:
+      brace_style: "end-expand"
+      break_chained_methods: true
+      end_with_newline: true
+      indent_size: 2
+      preserve_newlines: false
   "atom-typescript": {}
   "autocomplete-python":
     extraPaths: "$PROJECT:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python2.7/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.4/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.5/site-packages"
@@ -16,6 +24,7 @@
       "spell-check"
       "font-viewer"
       "json-schema"
+      "whitespace"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -29,10 +38,16 @@
       "*.dist-info"
     ]
     projectHome: "/home/remco/d-centralize"
+    telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "atom-dark-syntax"
     ]
+  docblockr:
+    align_tags: "no"
+    lower_case_primitives: true
+    return_tag: "@returns"
+    spacer_between_sections: true
   editor:
     autoIndentOnPaste: false
     fontSize: 10
@@ -41,7 +56,6 @@
     lineHeight: 1.3
     scrollPastEnd: true
     showInvisibles: true
-    softWrap: true
     tabLength: 4
   "file-icons": {}
   "file-templates": {}
@@ -60,11 +74,20 @@
     hideOnStartup: false
   "highlight-line":
     enableBackgroundColor: false
+  hyperclick:
+    linuxTriggerKeys: "shiftKey,ctrlKey"
+  "js-hyperclick":
+    extensions: [
+      ".js"
+      ".jsx"
+      ".json"
+      ".node"
+    ]
   "language-log":
     showFilterBar: false
   linter:
     displayLinterStatus: false
-    errorPanelHeight: 215
+    errorPanelHeight: 160
     ignoreMatchedFiles: "{**/*.min.*},*.md"
     showErrorInline: false
     showErrorTabFile: false
@@ -72,7 +95,12 @@
     statusIconScope: "File"
   "linter-eslint":
     disableWhenNoEslintrcFileInPath: true
+    fixOnSave: true
     globalNodePath: "/usr"
+    rulesToSilenceWhileTyping: [
+      "eol-last"
+      "no-trailing-spaces"
+    ]
   "linter-flake8":
     executablePath: "flake8-atom.sh"
   "linter-htmlhint": {}
@@ -87,14 +115,19 @@
   "linter-stylelint":
     disableWhenNoConfig: true
     usePreset: false
-  "markdown-pdf": {}
+  "markdown-pdf":
+    type: "png"
   "markdown-preview":
     breakOnSingleNewline: true
+  "markdown-preview-plus": {}
   "merge-conflicts": {}
   "one-dark-ui":
     layoutMode: "Compact"
+  "open-unsupported-files":
+    extensions: "doc,xls,ppt,docx,xlsx,pptx,pdf,rtf,zip,7z,rar,tar,gz,bz2,odt"
   "package-sync":
     createOnChange: true
+    forceOverwrite: true
   pigments: {}
   "remote-edit":
     clearFileList: true
@@ -114,13 +147,31 @@
     showOnStartup: false
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
+".angular.html.text":
+  editor:
+    tabLength: 4
 ".attribute-values.js.jsx.source":
+  editor:
+    tabLength: 4
+".coffee.jsx.source":
   editor:
     tabLength: 4
 ".console.python.text":
   editor:
     tabLength: 4
 ".cython.source":
+  editor:
+    tabLength: 4
+".editorconfig.source":
+  editor:
+    tabLength: 4
+".erb.html.text":
+  editor:
+    tabLength: 4
+".generic-config.text":
+  editor:
+    tabLength: 4
+".gitignore.source":
   editor:
     tabLength: 4
 ".ini.source":
@@ -147,6 +198,10 @@
   editor:
     tabLength: 4
 ".restructuredtext.text":
+  editor:
+    softWrap: true
+    tabLength: 4
+".ruby.source":
   editor:
     tabLength: 4
 ".source.ts":

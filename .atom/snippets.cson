@@ -29,3 +29,62 @@
   'Insert actual tab':
     'prefix': '\t'
     'body': '	'
+
+".source.js, .source.jsx, .source.ts":
+  "import default":
+    "prefix": "im"
+    "body": """
+    import ${1:name} from '${0:module}';
+    """
+
+  "import members":
+    "prefix": "im{"
+    "body": """
+    import {${1:names}} from '${0:module}';
+    """
+
+  "import all":
+    "prefix": "im*"
+    "body": """
+    import * as ${1:names} from '${0:module}';
+    """
+
+  "describe":
+    "prefix": "desc"
+    "body": """
+    describe('${1:description}', () => {
+    \t${0:// body...}
+    });
+    """
+
+  "it synchronous":
+    "prefix": "it"
+    "body": """
+    it('should ${1:description}', () => {
+    \t${0:// body...}
+    });
+    """
+
+  "it asynchronous":
+    "prefix": "its"
+    "body": """
+    it('should ${1:description}', done => {
+    \t${0:// body...}
+    });
+    """
+
+  "beforeEach":
+    "prefix": "bf"
+    "body": """
+    beforeEach(() => {
+    \t${0:// body...}
+    });
+    """
+
+  "afterEach":
+    "prefix": "af"
+    "body": """
+    afterEach(() => {
+    \t${0:// body...}
+    });
+    """
