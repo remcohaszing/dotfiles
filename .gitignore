@@ -6,3 +6,5 @@
 /.atom/nohup.out
 /.atom/packages/
 /.atom/recovery/
+
+/.local/share/virtualenvs/*/

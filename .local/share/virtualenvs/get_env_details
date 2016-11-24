@@ -1,0 +1,8 @@
+#!/bin/bash
+# This hook is run when the list of virtualenvs is printed so each name can include details.
+# argument: environment name
+
+"$WORKON_HOME/$1/bin/python" --version
+PROJECT="$(cat "$WORKON_HOME/$1/.project")"
+echo "${PROJECT/$HOME/\~}"
+PYTHONPATH='' "$WORKON_HOME/$1/bin/pip" list --format freeze | sed ':a;N;$!ba;s/\n/, /g'
