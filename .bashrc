@@ -123,6 +123,9 @@ source "$(dirname "$(dirname "$(which cordova)")")"/lib/node_modules/cordova/scr
 source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completion/bash 2> /dev/null
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
 
+# Npm tool aliases
+alias karma='xvfb-run karma'
+
 # Ruby gems
 if [ -d "$HOME/.gem/ruby" ]; then
   for f in $HOME/.gem/ruby/**; do
