@@ -26,6 +26,7 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 'atom-workspace':
+  'ctrl-shift-C': 'core:copy',
   'ctrl-k o': 'open-sesame:open-file-under-cursor',
   'ctrl-alt-l': 'open-in:toggle',
   'ctrl-shift-e': 'external-open:open-in-external-program'

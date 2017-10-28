@@ -70,6 +70,7 @@ if [ "$(uname)" == 'Darwin' ]; then
 else
   alias ls='ls --color=auto'
 fi
+alias tree='tree -C'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -98,15 +99,20 @@ fi
 # Aliases for convenience
 # Reset the terminal scrollback and follow the contents of a file
 alias follow='reset; tail -f -n +0'
+# Make scp always recursive
+alias scp='scp -r'
 
 # Used by tools that use select-editor
 export SELECTED_EDITOR=vim
 
 # Python
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
+export PYTEST_ADDOPTS='--cov --no-cov-on-fail'
 # Virtualenvwrapper
-VIRTUALENVWRAPPER_PYTHON="$(which python3)"
-export VIRTUALENVWRAPPER_PYTHON
+if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
+  VIRTUALENVWRAPPER_PYTHON="$(which python3.6)"
+  export VIRTUALENVWRAPPER_PYTHON
+fi
 source "$(which virtualenvwrapper.sh)"
 
 include thefuck --alias
@@ -124,7 +130,7 @@ source "$(dirname "$(dirname "$(which gulp)")")"/lib/node_modules/gulp/completio
 source "$(dirname "$(dirname "$(which grunt)")")"/lib/node_modules/grunt-cli/completion/bash 2> /dev/null
 
 # Npm tool aliases
-alias karma='xvfb-run karma'
+alias node-debug='node --inspect --inspect-brk "$(readlink -f "$(which appsemble-build)")"'
 
 # Ruby gems
 if [ -d "$HOME/.gem/ruby" ]; then
@@ -146,9 +152,7 @@ fi
 export JAVA_HOME
 
 # GCloud
-export CLOUDSDK_PYTHON=python2.7
-source "$HOME/.local/share/google-cloud-sdk/path.bash.inc" 2> /dev/null
-source "$HOME/.local/share/google-cloud-sdk/completion.bash.inc" 2> /dev/null
+#export CLOUDSDK_PYTHON=python2.7
 
 # OSX specific configx
 if hash brew 2>/dev/null; then
@@ -160,3 +164,7 @@ unset include
 if [ -f "$HOME/.travis/travis.sh" ]; then
   source "$HOME/.travis/travis.sh"
 fi
+
+# added by travis gem
+[ -f /home/remco/.travis/travis.sh ] && source /home/remco/.travis/travis.sh
+PATH="$HOME/.local/share/google-cloud-sdk/bin:$PATH"

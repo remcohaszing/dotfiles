@@ -25,7 +25,7 @@ def sizeof_fmt(num, format='{num:>6.1f} {unit:>3}'):
     return fmt(num=num, unit='YiB')
 
 
-client = docker.from_env()
+client = docker.APIClient(base_url='unix://var/run/docker.sock')
 
 
 def strip_sha(string):

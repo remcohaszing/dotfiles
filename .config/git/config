@@ -5,6 +5,8 @@
     all = true
 [credential]
     helper = cache
+[commit]
+    gpgSign = true
 [core]
     autocrlf = input
     eol = lf
@@ -30,8 +32,8 @@
 [push]
     default = matching
 [alias]
-    l = log --graph --decorate --pretty=short --abbrev-commit
-    lb = log --graph --decorate --pretty=short --abbrev-commit --branches
+    l = log --graph --decorate --pretty=short
+    lb = log --graph --decorate --pretty=short --branches
     wd = diff --word-diff=color
 [merge]
     defaultToUpstream = true

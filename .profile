@@ -8,17 +8,28 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
+#export XDG_CURRENT_DESKTOP=Unity
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
-ANDROID_HOME="$HOME/.local/share/android-sdk-linux"
+
+GRADLE_HOME="$HOME/.local/share/gradle"
+if [ -d "$GRADLE_HOME" ]; then
+  PATH="$GRADLE_HOME/bin:$PATH"
+fi
+
+ANDROID_HOME="$HOME/.local/share/android-sdk"
 if [ -d "$ANDROID_HOME" ]; then
   export ANDROID_HOME
+  PATH="$ANDROID_HOME/emulator:$PATH"
   PATH="$ANDROID_HOME/platform-tools:$PATH"
-  PATH="$ANDROID_HOME/tools:$PATH"
+  PATH="$ANDROID_HOME/tools/bin:$PATH"
 fi
 
 export PATH
 export MOZ_USE_OMTC=1
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export QT_QPA_PLATFORMTHEME=qt5ct
 export WORKON_HOME=$HOME/.local/share/virtualenvs

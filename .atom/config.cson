@@ -1,20 +1,33 @@
 "*":
   "atom-beautify":
+    general:
+      _analyticsUserId: "2147527d-54f3-4d8e-b9be-1ff35b990529"
     java: {}
+    js:
+      disabled: true
     json:
       brace_style: "end-expand"
       break_chained_methods: true
       end_with_newline: true
       indent_size: 2
       preserve_newlines: false
+  "atom-ternjs":
+    inlineFnCompletionDocumentation: true
   "atom-typescript": {}
+  "autocomplete-java": {}
+  "autocomplete-plus":
+    fileBlacklist: []
   "autocomplete-python":
-    extraPaths: "$PROJECT:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python2.7/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.4/site-packages:/home/remco/.local/share/virtualenvs/$PROJECT/lib/python3.5/site-packages"
-    pythonExecutable: "python3"
+    extraPaths: "$PROJECT"
+    pythonPaths: "/home/remco/.local/share/virtualenvs/$PROJECT_NAME/bin/python"
+    showTooltips: true
+    useKite: false
   "bracket-matcher":
     autocompleteBrackets: false
     autocompleteSmartQuotes: false
     wrapSelectionsInBrackets: false
+  "color-picker":
+    preferredFormat: "HEX"
   core:
     allowPendingPaneItems: false
     audioBeep: false
@@ -22,11 +35,11 @@
     destroyEmptyPanes: false
     disabledPackages: [
       "spell-check"
-      "font-viewer"
-      "json-schema"
       "whitespace"
+      "language-gfm"
+      "notifications"
+      "language-python"
     ]
-    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       "__pycache__"
@@ -37,7 +50,10 @@
       "*.orig"
       "*.dist-info"
     ]
-    projectHome: "/home/remco/d-centralize"
+    packagesWithKeymapsDisabled: [
+      "lcov-info"
+    ]
+    projectHome: "/home/remco/git"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
@@ -47,18 +63,20 @@
     align_tags: "no"
     lower_case_primitives: true
     return_tag: "@returns"
-    spacer_between_sections: true
   editor:
     autoIndentOnPaste: false
-    fontSize: 10
+    fontSize: 11
     invisibles:
       eol: " "
     lineHeight: 1.3
     scrollPastEnd: true
     showInvisibles: true
     tabLength: 4
+  "exception-reporting":
+    userId: "5b2d638a-049a-4941-903e-e200c8a7ad16"
   "file-icons": {}
-  "file-templates": {}
+  "file-templates":
+    templateStore: "/home/remco/.local/share/templates"
   "file-types":
     "\\.cfg$": "source.ini"
     "\\.js$": "source.js"
@@ -66,10 +84,16 @@
     "^AppFile$": "source.ruby"
     "^Deliverfile$": "source.ruby"
     "^Fastfile$": "source.ruby"
+    "^\\.appsemblerc$": "source.yaml"
     "^\\.coveragerc$": "source.ini"
     "^\\.eslintignore": "source.gitignore"
+    "^\\.gitignore": "source.gitignore"
+    "^\\.npmrc$": "source.ini"
     "^\\.stylelintignore": "source.gitignore"
     "^\\.stylelintrc$": "source.yaml"
+    "^\\.yamllint$": "source.yaml"
+    "^mcmod.info$": "source.json"
+  "git-diff": {}
   "git-hide":
     hideOnStartup: false
   "highlight-line":
@@ -85,25 +109,29 @@
     ]
   "language-log":
     showFilterBar: false
-  linter:
-    displayLinterStatus: false
-    errorPanelHeight: 160
-    ignoreMatchedFiles: "{**/*.min.*},*.md"
-    showErrorInline: false
-    showErrorTabFile: false
-    showErrorTabProject: false
-    statusIconScope: "File"
+  "language-markdown": {}
+  "lcov-info":
+    highlightType: "gutter"
+  linter: {}
   "linter-eslint":
+    disableFSCache: true
     disableWhenNoEslintrcFileInPath: true
     fixOnSave: true
-    globalNodePath: "/usr"
+    globalNodePath: "/home/remco/.local"
+    rulesToDisableWhileFixing: [
+      "no-debugger"
+    ]
     rulesToSilenceWhileTyping: [
       "eol-last"
       "no-trailing-spaces"
+      "import/no-unresolved"
+      "import/extensions"
     ]
   "linter-flake8":
-    executablePath: "flake8-atom.sh"
+    executablePath: "/home/remco/.local/share/virtualenvs/$PROJECT_NAME/bin/flake8;/home/remco/.local/bin/flake8"
   "linter-htmlhint": {}
+  "linter-js-standard":
+    checkStyleDevDependencies: true
   "linter-jscs":
     onlyConfig: true
   "linter-jshint":
@@ -115,14 +143,22 @@
   "linter-stylelint":
     disableWhenNoConfig: true
     usePreset: false
+  "linter-ui-default":
+    decorateOnTreeView: "Files and Directories"
+    hidePanelWhenEmpty: true
+    panelHeight: 172
+    showPanel: true
+    showProviderName: true
+    statusBarRepresents: "Current File"
+  "linter-write-good":
+    severityLevel: "Info"
   "markdown-pdf":
     type: "png"
   "markdown-preview":
     breakOnSingleNewline: true
   "markdown-preview-plus": {}
   "merge-conflicts": {}
-  "one-dark-ui":
-    layoutMode: "Compact"
+  "one-dark-ui": {}
   "open-unsupported-files":
     extensions: "doc,xls,ppt,docx,xlsx,pptx,pdf,rtf,zip,7z,rar,tar,gz,bz2,odt"
   "package-sync":
@@ -171,6 +207,9 @@
 ".generic-config.text":
   editor:
     tabLength: 4
+".gfm.source":
+  editor:
+    tabLength: 2
 ".gitignore.source":
   editor:
     tabLength: 4
@@ -193,7 +232,14 @@
 ".json.source":
   editor:
     softWrap: false
+    softWrapAtPreferredLineLength: false
     tabLength: 4
+".md.text":
+  editor:
+    preferredLineLength: 200
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 2
+    tabLength: 2
 ".python.text.traceback":
   editor:
     tabLength: 4

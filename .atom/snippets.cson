@@ -1,34 +1,7 @@
-# Your snippets
-#
-# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
-# expand the prefix into a larger code block with templated values.
-#
-# You can create a new snippet in this file by typing "snip" and then hitting
-# tab.
-#
-# An example CoffeeScript snippet to expand log to console.log:
-#
-# '.source.coffee':
-#   'Console log':
-#     'prefix': 'log'
-#     'body': 'console.log $1'
-#
-# Each scope (e.g. '.source.coffee' above) can only be declared once.
-#
-# This file uses CoffeeScript Object Notation (CSON).
-# If you are unfamiliar with CSON, you can read more about it in the
-# Atom Flight Manual:
-# https://atom.io/docs/latest/using-atom-basic-customization#cson
-
 '.source.python':
   'py.test mark as WIP':
     'prefix': '@wip'
     'body': '@pytest.mark.wip'
-
-'*':
-  'Insert actual tab':
-    'prefix': '\t'
-    'body': '	'
 
 ".source.js, .source.jsx, .source.ts":
   "import default":
@@ -47,44 +20,4 @@
     "prefix": "im*"
     "body": """
     import * as ${1:names} from '${0:module}';
-    """
-
-  "describe":
-    "prefix": "desc"
-    "body": """
-    describe('${1:description}', () => {
-    \t${0:// body...}
-    });
-    """
-
-  "it synchronous":
-    "prefix": "it"
-    "body": """
-    it('should ${1:description}', () => {
-    \t${0:// body...}
-    });
-    """
-
-  "it asynchronous":
-    "prefix": "its"
-    "body": """
-    it('should ${1:description}', done => {
-    \t${0:// body...}
-    });
-    """
-
-  "beforeEach":
-    "prefix": "bf"
-    "body": """
-    beforeEach(() => {
-    \t${0:// body...}
-    });
-    """
-
-  "afterEach":
-    "prefix": "af"
-    "body": """
-    afterEach(() => {
-    \t${0:// body...}
-    });
     """

@@ -1,72 +1,104 @@
-@import "packages/file-icons/styles/colors";
+@import "packages/file-icons/styles/colours";
+@import "packages/file-icons/styles/fonts";
 @import "packages/file-icons/styles/icons";
 
-// style the background color of the tree view
-.tree-view {
-  &::before {
-    height: 2em !important;
+
+
+.autocomplete-plus autocomplete-suggestion-list.select-list.popover-list {
+  min-width: 500px;
+}
+
+
+atom-dock {
+  .list-inline.tab-bar.inset-panel,
+  .atom-dock-toggle-button.left {
+    display: none;
   }
 
-  .project-root {
+  // style the background color of the tree view
+  .tree-view {
     &::before {
-      line-height: 2em !important;
       height: 2em !important;
     }
-    &>.header.list-item .name {
-      line-height: 2em !important;
 
-      &[data-path^="/media"] {
-        color: #5599dd;
+    .project-root {
+      &::before {
+        line-height: 2em !important;
+        height: 2em !important;
+      }
+      &>.header.list-item .name {
+        line-height: 2em !important;
+
+        &[data-path^="/media"] {
+          color: #5599dd;
+        }
       }
     }
-  }
 
-  .list-tree {
-    @line-height: 1.5em;
+    .list-tree {
+      @line-height: 1.5em;
 
-    .list-item,
-    .list-item-nested {
-       line-height: @line-height !important;
-       height: @line-height !important;
-    }
-    .selected::before {
-      height: @line-height !important;
-    }
+      .list-item,
+      .list-item-nested {
+         line-height: @line-height !important;
+         height: @line-height !important;
+      }
+      .selected::before {
+        height: @line-height !important;
+      }
 
-    .name[data-name="Appfile"]:before {
-      .ruby-icon;
-      .medium-red;
-    }
+      .name:before {
+        font-size: @line-height - 0.2em;
+      }
 
-    .name[data-name$=".apk"]:before {
-      .android-icon;
-      .medium-green;
-    }
+      .name[data-name="Appfile"]:before {
+        .octicons;
+        content: '\f047';
+        color: @medium-red;
+      }
 
-    .name[data-name$=".jks"]:before,
-    .name[data-name$=".keystore"]:before {
-      .java-icon;
-      color: gray;
-    }
+      .name[data-name$=".apk"]:before {
+        .fa;
+        content: '\f17b';
+        color: @medium-green;
+      }
 
-    .name[data-name$=".ipa"]:before {
-      .apple-icon;
-      color: white;
-    }
+      .name[data-name$="app.yaml"]:before {
+        .devicons;
+        content: '\E6B2';
+      }
 
-    .name[data-name$=".js.map"]:before {
-      .database-icon;
-    }
-
-    .name[data-name="tsconfig.json"]:before,
-    .name[data-name="tslint.json"]:before {
-      .ts-icon;
-      .dark-orange;
-    }
-
-    .name[data-name$="requirements.txt"]:before {
-      .python-icon;
-      .dark-orange;
+      .name[data-name$="config.xml"]:before {
+        .fi;
+        content: '\EA11';
+        color: grey;
+      }
+      //
+      // .name[data-name$=".jks"]:before,
+      // .name[data-name$=".keystore"]:before {
+      //   .java-icon;
+      //   color: gray;
+      // }
+      //
+      // .name[data-name$=".ipa"]:before {
+      //   .apple-icon;
+      //   color: white;
+      // }
+      //
+      // .name[data-name$=".js.map"]:before {
+      //   color: @database-icon;
+      // }
+      //
+      // .name[data-name$="requirements.txt"]:before {
+      //   .python-icon;
+      //   color: @dark-orange;
+      // }
+      //
+      .name[data-name=".appsemblerc"]:before {
+        .fa;
+        content: '\f135';
+        color: @light-blue;
+      }
     }
   }
 }
@@ -94,6 +126,10 @@ atom-pane.pane {
   font-size: 0.8em;
 }
 
+.atom-dock-toggle-button {
+  display: none;
+}
+
 atom-panel linter-panel {
   padding: 0;
 }
@@ -103,36 +139,69 @@ atom-text-editor {
   background-color: black;
 }
 
-.editor, atom-text-editor::shadow {
+atom-text-editor.editor {
   .find-result .region {
     // background-color: #00417e;
     // border: 0;
   }
 
-  .markup {
-    &.underline.link.hyperlink {
-      color: #47caff;
-      text-decoration: underline;
-    }
+  .syntax--underline {
+    text-decoration: underline;
+  }
 
-    &.bold {
+  .syntax--hyperlink {
+    color: #47caff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .syntax--bold {
+    font-weight: bold;
+  }
+
+  .syntax--quote {
+    color: #b3b3b3;
+
+    &> .syntax--punctuation.syntax--md {
+      color: #737373;
+    }
+  }
+
+  .syntax--italic {
+    font-style: italic;
+  }
+
+  .syntax--raw {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .syntax--strike {
+    text-decoration: line-through;
+  }
+
+  .syntax--md, .syntax--restructuredtext {
+    &.syntax--heading {
       font-weight: bold;
     }
 
-    &.italic {
-      font-style: italic;
+    &.syntax--punctuation {
+      color: #c75a57;
     }
 
-    &.raw {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    &.strike {
-      text-decoration: line-through;
+    &.syntax--table>.syntax--punctuation {
+      color: #6a9449;
+      font-weight: bold;
     }
   }
-}
 
-// To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
+  .syntax--python {
+    &.syntax--fstring {
+      .syntax--storage.syntax--interpolated,
+      .syntax--format {
+        color: #edb6fc;
+      }
+    }
+  }
 }
