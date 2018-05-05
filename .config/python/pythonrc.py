@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 import atexit
 import collections  # noqa
+import contextlib  # noqa
 import datetime  # noqa
 import io  # noqa
 import json  # noqa

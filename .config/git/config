@@ -7,13 +7,14 @@
     helper = cache
 [commit]
     gpgSign = true
+[tag]
+    gpgSign = true
 [core]
     autocrlf = input
     eol = lf
     whitespace = cr-at-eol,tab-in-indent,trailing-space
     pager = less -x 5,9,13,17,21,25,29,33,37,41
     excludesfile = ~/.config/git/ignore
-    attributesfile = ~/.config/git/attributes
     editor = vim
     compactionHeuristic = true
 [color]
@@ -25,6 +26,7 @@
     status = auto
     ui = auto
 [fetch]
+    prune = true
     recurseSubmodules = true
 [pager]
     diff = diff-so-fancy | less
@@ -32,7 +34,7 @@
 [push]
     default = matching
 [alias]
-    l = log --graph --decorate --pretty=short
+    l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
     lb = log --graph --decorate --pretty=short --branches
     wd = diff --word-diff=color
 [merge]

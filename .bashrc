@@ -2,7 +2,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -28,7 +27,7 @@ shopt -s checkwinsize
 
 # Disable less history
 export LESSHISTFILE="-"
-export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+export LESSOPEN='|file=%s; /usr/bin/lesspipe "$file" | /usr/bin/ifne -n /usr/share/source-highlight/src-hilite-lesspipe.sh -i "$file" -o STDOUT 2>/dev/null'
 export LESS=' -R '
 
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -108,19 +107,14 @@ export SELECTED_EDITOR=vim
 # Python
 export PYTHONSTARTUP=$HOME/.config/python/pythonrc.py
 export PYTEST_ADDOPTS='--cov --no-cov-on-fail'
-# Virtualenvwrapper
-if [ -z "$VIRTUALENVWRAPPER_PYTHON" ]; then
-  VIRTUALENVWRAPPER_PYTHON="$(which python3.6)"
-  export VIRTUALENVWRAPPER_PYTHON
-fi
-source "$(which virtualenvwrapper.sh)"
 
 include thefuck --alias
 
 # Some manual completion
 source /usr/share/doc/tmux/examples/bash_completion_tmux.sh 2> /dev/null
 #source <(pip completion --bash) 2> /dev/null
-include pip completion --bash
+include pip --disable-pip-version-check completion --bash
+include pipenv --completion
 include npm completion
 if hash find_pycompletion.sh 2> /dev/null; then
   source "$(find_pycompletion.sh)"
@@ -167,4 +161,4 @@ fi
 
 # added by travis gem
 [ -f /home/remco/.travis/travis.sh ] && source /home/remco/.travis/travis.sh
-PATH="$HOME/.local/share/google-cloud-sdk/bin:$PATH"
+#PATH="$HOME/.local/share/google-cloud-sdk/bin:$PATH"

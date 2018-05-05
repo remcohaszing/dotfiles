@@ -27,19 +27,19 @@ include "%L"
 <Multi_key> <P> <I>                     : "Π"
 
 # Emoticons
-<Multi_key> <colon> <3>                 : "🐼"       # : 3   Panda
+<Multi_key> <colon> <3>                 : "🐼"      # : 3   Panda
 <Multi_key> <8> <period>                : "☃"       # 8 .   Snowman
-<Multi_key> <equal> <parenright>        : "😸"       # = ) grinning cat face with smiling eyes
-<Multi_key> <equal> <minus>             : "😹"       # = - cat face with tears of joy
-<Multi_key> <equal> <D>                 : "😺"       # = D smiling cat face with open mouth
-<Multi_key> <equal> <3>                 : "😻"       # = 3 smiling cat face with heart-shaped eyes
-<Multi_key> <equal> <slash>             : "😼"       # = / cat face with wry smile
-<Multi_key> <bar> <3>                   : "😽"       # | 3 kissing cat face with closed eyes
-<Multi_key> <greater> <equal>           : "😾"       # > 3 pouting cat face
-<Multi_key> <equal> <parenleft>         : "😿"       # = ( crying cat face
-<Multi_key> <D> <equal>                 : "🙀"       # D = weary cat face
-<Multi_key> <p> <p>                     : "🎃"       # p p pumpkin
+<Multi_key> <equal> <parenright>        : "😸"      # = ) grinning cat face with smiling eyes
+<Multi_key> <equal> <minus>             : "😹"      # = - cat face with tears of joy
+<Multi_key> <equal> <D>                 : "😺"      # = D smiling cat face with open mouth
+<Multi_key> <equal> <3>                 : "😻"      # = 3 smiling cat face with heart-shaped eyes
+<Multi_key> <equal> <slash>             : "😼"      # = / cat face with wry smile
+<Multi_key> <bar> <3>                   : "😽"      # | 3 kissing cat face with closed eyes
+<Multi_key> <greater> <equal>           : "😾"      # > 3 pouting cat face
+<Multi_key> <equal> <parenleft>         : "😿"      # = ( crying cat face
+<Multi_key> <D> <equal>                 : "🙀"      # D = weary cat face
+<Multi_key> <p> <p>                     : "🎃"      # p p pumpkin
 
 # Other
-<Multi_key <v> <v>                      : "⛧"
-<Multi_key <asciicircum> <asciicircom>  : "⛤"
+<Multi_key> <v> <v>                      : "⛧"
+<Multi_key> <asciicircum> <asciicircom>  : "⛤"

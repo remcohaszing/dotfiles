@@ -7,3 +7,9 @@
 
 # travis logs
 *travis.log
+
+# MacOS files
+.DS_Store
+
+# VSCode settings
+.vscode
