@@ -1,12 +1,4 @@
 #!/bin/sh
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-  # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
-  fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
@@ -17,12 +9,18 @@ if [ -d "$GRADLE_HOME" ]; then
   PATH="$GRADLE_HOME/bin:$PATH"
 fi
 
-ANDROID_HOME="$HOME/.local/share/android-sdk"
-if [ -d "$ANDROID_HOME" ]; then
-  export ANDROID_HOME
-  PATH="$ANDROID_HOME/platform-tools:$PATH"
-  PATH="$ANDROID_HOME/tools:$PATH"
-  PATH="$ANDROID_HOME/tools/bin:$PATH"
+ANDROID_SDK_ROOT="$HOME/.local/share/android-sdk"
+if [ -d "$ANDROID_SDK_ROOT" ]; then
+  export ANDROID_SDK_ROOT
+  PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
+  PATH="$ANDROID_SDK_ROOT/tools:$PATH"
+  PATH="$ANDROID_SDK_ROOT/tools/bin:$PATH"
+fi
+
+if [ -d "$HOME/.gem/ruby" ]; then
+  for f in $HOME/.gem/ruby/**; do
+    PATH=$f/bin:$PATH
+  done
 fi
 
 export PATH

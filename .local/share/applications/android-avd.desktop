@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Android Virtual Device Manager
-Comment=
-Exec=android avd
-Terminal=false
-Type=Application
-Icon=android-sdk
-StartupNotify=true
-Categories=Development

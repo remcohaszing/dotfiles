@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Android SDK Manager
-Comment=
-Exec=android
-Terminal=false
-Type=Application
-Icon=android-sdk
-StartupNotify=true
-Categories=Development
