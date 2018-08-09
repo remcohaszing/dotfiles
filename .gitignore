@@ -1,10 +1,1 @@
-/.atom/.apm/
-/.atom/.node-gyp/
-/.atom/blob-store/
-/.atom/compile-cache/
-/.atom/markdown-themeable-pdf/
-/.atom/nohup.out
-/.atom/packages/
-/.atom/recovery/
-
-/.local/share/virtualenvs/*/
+/.config/Code/User/workspaceStorage/

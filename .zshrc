@@ -10,26 +10,26 @@ ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
+
+
 export LESSHISTFILE="-"
-if type lesspipe &> /dev/null; then
-  LESSPIPE="$(which lesspipe)"
-elif [ -x lesspipe.sh ]; then
-  LESSPIPE="$(which lesspipe.sh)"
+if (( $+commands[lesspipe] )); then
+  LESSPIPE="lesspipe"
+elif (( $+commands[lesspipe.sh] )); then
+  LESSPIPE="lesspipe.sh"
 fi
-if [ -n "$LESSPIPE" ]; then
-  if type ifne &> /dev/null; then
-    IFNE="$(which ifne)"
-    if type src-hilite-lesspipe.sh &> /dev/null; then
-      HILITEPIPE="$(which src-hilite-lesspipe.sh)"
+if (( $+LESSPIPE )); then
+  export LESSOPEN="|f=%s $LESSPIPE \$f"
+  if (( $+commands[ifne] )); then
+    IFNE="ifne"
+    if (( $+commands[src-hilite-lesspipe.sh] )); then
+      HILITEPIPE="src-hilite-lesspipe.sh"
     elif [ -x /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
       HILITEPIPE='/usr/share/source-highlight/src-hilite-lesspipe.sh'
     fi
-    if [ -n "$HILITEPIPE" ]; then
-      export LESSOPEN="|f=%s; $LESSPIPE "\$f" | $IFNE -n $HILITEPIPE -i "\$f" -o STDOUT 2>/dev/null"
+    if (( $+HILITEPIPE )); then
+      export LESSOPEN="$LESSOPEN | $IFNE -n $HILITEPIPE -i "\$f" -o STDOUT 2>/dev/null"
     fi
-  fi
-  if [ -z "$HILITEPIPE" ]; then
-    export LESSOPEN="| $LESSPIPE %s"
   fi
 fi
 
@@ -47,32 +47,46 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 plugins=(
   adb
   command-not-found
-  cp
   docker
   docker-compose
   pip
-  python
-  rsync
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
 autoload -U zmv
+PROMPT='%{$fg[green]%}%n@%m:%{$fg_bold[blue]%}%~ $(git_prompt_info)%{$reset_color%}%(!.#.$) '
 
-if [ -n "$SSH_CONNECTION" ] && [[ "$OSTYPE" == "darwin"* ]]; then
+if (( $+SSH_CONNECTION )) && [[ "$OSTYPE" == "darwin"* ]]; then
   security unlock-keychain "$HOME/Library/Keychains/login.keychain"
 fi
-if type pew &> /dev/null; then
+if (( $+commands[kubectl] )); then
+  source <(kubectl completion zsh)
+fi
+if (( $+commands[pew] )); then
   source "$(pew shell_config)"
 fi
-if type pipenv &> /dev/null; then
+if (( $+commands[pipenv] )); then
   source <(pipenv --completion)
+  export PIPENV_SHELL="$SHELL"
+  if (( $+commands[code] )); then
+    code () {
+      if [[ -f "$1/Pipfile" ]]; then
+        pushd $1 > /dev/null
+        pipenv run $commands[code] . ${@:2}
+        popd > /dev/null
+      else
+        $commands[code] $@
+      fi
+    }
+  fi
 fi
-if type xclip &> /dev/null; then
+if (( $+commands[xclip] )); then
   alias xclip='xclip -selection clipboard'
 fi
-if type scp &> /dev/null; then
+if (( $+commands[scp] )); then
   alias scp='scp -r'
 fi
-if [ -n "$TILIX_ID" ]; then
+if (( $+TILIX_ID )) && [ -f /etc/profile.d/vte-2.91.sh ]; then
   source /etc/profile.d/vte-2.91.sh
 fi

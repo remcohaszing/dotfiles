@@ -1,0 +1,7 @@
+{
+  "Pytest wip": {
+    "prefix": "@wip",
+    "body": "@pytest.mark.wip",
+    "description": "A Pytest wip marker."
+  }
+}

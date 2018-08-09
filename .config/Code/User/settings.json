@@ -1,0 +1,111 @@
+{
+  "[python]": {
+    "editor.rulers": [
+      72,
+      80
+    ]
+  },
+  "[restructuredtext]": {
+    "editor.wordWrap": "bounded"
+  },
+  "css.validate": false,
+  "csv-preview.capitalizeHeaders": false,
+  "docker.showExplorer": false,
+  "editor.autoClosingBrackets": false,
+  "editor.fontSize": 10,
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [{
+        "scope": "markup.bold",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "markup.italic",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "markup.underline.link",
+        "settings": {
+          "foreground": "#55bbff",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "invalid.rainbow10",
+        "settings": {
+          "foreground": "#ffff88"
+        }
+      }
+    ]
+  },
+  "editor.wordWrapColumn": 180,
+  "eslint.autoFixOnSave": true,
+  "eslint.options": {
+    "rules": {
+      "no-debugger": "off"
+    }
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    // "markdown"
+  ],
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.visible": 0,
+  "extensions.autoUpdate": false,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "files.associations": {
+    "**/Deliverfile": "ruby",
+    "**/Pipfile": "toml",
+    "**/Pipfile.lock": "json"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true
+  },
+  "files.trimFinalNewlines": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.validate.enable": false,
+  "keyboard.dispatch": "keyCode",
+  // "markdownlint.config": {
+  //   "MD040": false,
+  // },
+  // "markdownlint.ignore": [
+  //   "**/node_modules/**"
+  // ],
+  "python.linting.pylintEnabled": false,
+  "python.venvPath": "~/.local/share/virtualenvs",
+  "shellcheck.disableVersionCheck": true,
+  "terminal.integrated.fontSize": 10,
+  "window.menuBarVisibility": "toggle",
+  "workbench.activityBar.visible": false,
+  "workbench.colorCustomizations": {
+    "editor.background": "#000000",
+    "editor.lineHighlightBackground": "#000000",
+    "gitDecoration.ignoredResourceForeground": "#666666",
+    "sideBar.background": "#050505",
+    "statusBar.background": "#080808",
+    "panel.background": "#000000",
+    "editorWarning.foreground": "#ffb055",
+    "panel.border": "#222222"
+  },
+  "workbench.colorTheme": "Blakai Theme",
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.iconTheme": "file-icons",
+  "window.zoomLevel": 0,
+}

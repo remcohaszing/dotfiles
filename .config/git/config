@@ -35,6 +35,7 @@
     default = matching
     followTags = true
 [alias]
+    c = clean -xdf -e .vscode
     l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
     lb = log --graph --decorate --pretty=short --branches
     wd = diff --word-diff=color
