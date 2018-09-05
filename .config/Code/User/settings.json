@@ -50,13 +50,6 @@
       "no-debugger": "off"
     }
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    // "markdown"
-  ],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
@@ -89,6 +82,8 @@
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
+  "solargraph.checkGemVersion": false,
+  "templateGenerator.templatesPath": "/home/remco/.local/share/templates",
   "terminal.integrated.fontSize": 10,
   "window.menuBarVisibility": "toggle",
   "workbench.activityBar.visible": false,

@@ -29,7 +29,9 @@
     prune = true
     recurseSubmodules = true
 [pager]
+    branch = cat
     diff = diff-so-fancy | less
+    grep = cat
     show = diff-so-fancy | less
 [push]
     default = matching

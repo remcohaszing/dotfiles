@@ -28,7 +28,7 @@ if (( $+LESSPIPE )); then
       HILITEPIPE='/usr/share/source-highlight/src-hilite-lesspipe.sh'
     fi
     if (( $+HILITEPIPE )); then
-      export LESSOPEN="$LESSOPEN | $IFNE -n $HILITEPIPE -i "\$f" -o STDOUT 2>/dev/null"
+      export LESSOPEN="$LESSOPEN | $IFNE -n $HILITEPIPE -i \"\$f\" -o STDOUT 2>/dev/null"
     fi
   fi
 fi
@@ -53,7 +53,7 @@ plugins=(
   yarn
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 autoload -U zmv
 PROMPT='%{$fg[green]%}%n@%m:%{$fg_bold[blue]%}%~ $(git_prompt_info)%{$reset_color%}%(!.#.$) '
 
@@ -62,6 +62,9 @@ if (( $+SSH_CONNECTION )) && [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 if (( $+commands[kubectl] )); then
   source <(kubectl completion zsh)
+fi
+if (( $+commands[npm] )); then
+  source <(npm completion)
 fi
 if (( $+commands[pew] )); then
   source "$(pew shell_config)"
@@ -72,11 +75,11 @@ if (( $+commands[pipenv] )); then
   if (( $+commands[code] )); then
     code () {
       if [[ -f "$1/Pipfile" ]]; then
-        pushd $1 > /dev/null
-        pipenv run $commands[code] . ${@:2}
+        pushd "$1" > /dev/null
+        pipenv run "$commands[code]" . "${@:2}"
         popd > /dev/null
       else
-        $commands[code] $@
+        "$commands[code]" "$@"
       fi
     }
   fi
