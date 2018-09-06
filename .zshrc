@@ -57,8 +57,22 @@ source "$ZSH/oh-my-zsh.sh"
 autoload -U zmv
 PROMPT='%{$fg[green]%}%n@%m:%{$fg_bold[blue]%}%~ $(git_prompt_info)%{$reset_color%}%(!.#.$) '
 
-if (( $+SSH_CONNECTION )) && [[ "$OSTYPE" == "darwin"* ]]; then
-  security unlock-keychain "$HOME/Library/Keychains/login.keychain"
+if (( $+SSH_CONNECTION )); then
+  export LANG=en_US.UTF-8
+  export LC_ADDRESS="$LANG"
+  export LC_ALL="$LANG"
+  export LC_CTYPE="$LANG"
+  export LC_IDENTIFICATION="$LANG"
+  export LC_MEASUREMENT="$LANG"
+  export LC_MONETARY="$LANG"
+  export LC_NAME="$LANG"
+  export LC_NUMERIC="$LANG"
+  export LC_PAPER="$LANG"
+  export LC_TELEPHONE="$LANG"
+  export LC_TIME="$LANG"
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    security unlock-keychain "$HOME/Library/Keychains/login.keychain"
+  fi
 fi
 if (( $+commands[kubectl] )); then
   source <(kubectl completion zsh)
