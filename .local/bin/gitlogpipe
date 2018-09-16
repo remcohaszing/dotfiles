@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+import re
+import sys
+from contextlib import suppress
+
+
+def color(fg):
+    return f'\x1b[{fg}m'
+
+
+reset = color(0)
+red = color(31)
+green = color(32)
+yellow = color(33)
+magenta = color(35)
+
+
+replacements = {
+    # a good (valid) signature
+    'G ': f'{green}✔{reset} ',
+    # a bad signature
+    'B ': f'{red}✘{reset} ',
+    # a good signature with unknown validity
+    'U ': f'{yellow}✔{reset} ',
+    # a good signature that has expired
+    'X ': '⌛ ',
+    # a good signature made by an expired key
+    'Y ': '⏱ ',
+    # a good signature made by a revoked key
+    'R ': '🔓 ',
+    # the signature cannot be checked (e.g. missing key)
+    'E ': f'{magenta}E{reset} ',
+    # no signature
+    'N ': '',
+}
+
+
+
+graph = r'([\s\\/\|]|\x1b\[[0-9;]*m)*'
+pattern = re.compile(
+    fr'^(?P<prefix>{graph}\*{graph})'
+    fr'(?P<r>[{"".join(replacements)}]\s)'
+)
+
+
+def replace(match):
+    return f'{match.group("prefix")}{replacements.get(match.group("r"))}'
+
+
+with suppress(BrokenPipeError):
+    for line in sys.stdin:
+        print(pattern.sub(replace, line), end='')

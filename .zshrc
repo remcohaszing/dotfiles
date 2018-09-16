@@ -89,9 +89,9 @@ if (( $+commands[pipenv] )); then
   if (( $+commands[code] )); then
     code () {
       if [[ -f "$1/Pipfile" ]]; then
-        pushd "$1" > /dev/null
+        cd "$1"
         pipenv run "$commands[code]" . "${@:2}"
-        popd > /dev/null
+        cd - > /dev/null
       else
         "$commands[code]" "$@"
       fi
@@ -103,6 +103,9 @@ if (( $+commands[xclip] )); then
 fi
 if (( $+commands[scp] )); then
   alias scp='scp -r'
+fi
+if [ -f /usr/lib/google-cloud-sdk/completion.bash.inc ]; then
+  source /usr/lib/google-cloud-sdk/completion.bash.inc
 fi
 if (( $+TILIX_ID )) && [ -f /etc/profile.d/vte-2.91.sh ]; then
   source /etc/profile.d/vte-2.91.sh

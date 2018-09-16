@@ -69,22 +69,18 @@
     "**/__pycache__": true
   },
   "files.trimFinalNewlines": true,
+  "javascript.autoClosingTags": false,
   "javascript.implicitProjectConfig.checkJs": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.validate.enable": false,
   "keyboard.dispatch": "keyCode",
-  // "markdownlint.config": {
-  //   "MD040": false,
-  // },
-  // "markdownlint.ignore": [
-  //   "**/node_modules/**"
-  // ],
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
   "solargraph.checkGemVersion": false,
   "templateGenerator.templatesPath": "/home/remco/.local/share/templates",
   "terminal.integrated.fontSize": 10,
+  "typescript.autoClosingTags": false,
   "window.menuBarVisibility": "toggle",
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
@@ -101,6 +97,7 @@
   "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "workbench.iconTheme": "file-icons",
+  "workbench.iconTheme": "vscode-icons",
   "window.zoomLevel": 0,
+  "vsicons.presets.foldersAllDefaultIcon": true,
 }
