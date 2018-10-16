@@ -11,7 +11,8 @@
   "css.validate": false,
   "csv-preview.capitalizeHeaders": false,
   "docker.showExplorer": false,
-  "editor.autoClosingBrackets": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
   "editor.fontSize": 10,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
@@ -57,8 +58,6 @@
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
     "**/Deliverfile": "ruby",
-    "**/Pipfile": "toml",
-    "**/Pipfile.lock": "json"
   },
   "files.exclude": {
     "**/.git": true,
@@ -70,14 +69,18 @@
   },
   "files.trimFinalNewlines": true,
   "javascript.autoClosingTags": false,
+  "javascript.format.enable": false,
   "javascript.implicitProjectConfig.checkJs": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.validate.enable": false,
   "keyboard.dispatch": "keyCode",
+  "markdown.extension.tableFormatter.enabled": false,
+  "prettier.requireConfig": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
   "solargraph.checkGemVersion": false,
+  "svg.preview.background": "transparent",
   "templateGenerator.templatesPath": "/home/remco/.local/share/templates",
   "terminal.integrated.fontSize": 10,
   "typescript.autoClosingTags": false,
@@ -100,4 +103,5 @@
   "workbench.iconTheme": "vscode-icons",
   "window.zoomLevel": 0,
   "vsicons.presets.foldersAllDefaultIcon": true,
+  "workbench.settings.editor": "json",
 }

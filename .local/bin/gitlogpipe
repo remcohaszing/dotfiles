@@ -29,7 +29,7 @@ replacements = {
     # a good signature made by a revoked key
     'R ': '🔓 ',
     # the signature cannot be checked (e.g. missing key)
-    'E ': f'{magenta}E{reset} ',
+    'E ': '❗ ',
     # no signature
     'N ': '',
 }

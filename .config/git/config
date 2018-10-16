@@ -1,10 +1,8 @@
-[add]
-    all = true
 [alias]
     l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
-    lb = log --graph --decorate --pretty=short --branches
+    lb = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset' --branches
     wd = diff --word-diff=color
-    x = clean -xdf -e .vscode
+    x = clean -xdf -e /.vscode
 [clone]
     recurse-submodules = true
 [color]
@@ -19,12 +17,10 @@
     gpgSign = true
 [core]
     autocrlf = input
-    eol = lf
-    whitespace = cr-at-eol,tab-in-indent,trailing-space
-    pager = less -x 5,9,13,17,21,25,29,33,37,41
-    excludesfile = ~/.config/git/ignore
     editor = vim
-    compactionHeuristic = true
+    eol = lf
+    excludesfile = ~/.config/git/ignore
+    whitespace = cr-at-eol,tab-in-indent,trailing-space
 [credential]
     helper = cache
 [diff "image"]
@@ -45,10 +41,10 @@
     show = diff-so-fancy | less
     tag = cat
 [push]
-    default = matching
+    default = current
     followTags = true
 [tag]
     gpgSign = true
 [user]
-    name = Remco Haszing
     email = remcohaszing@gmail.com
+    name = Remco Haszing

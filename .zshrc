@@ -19,7 +19,7 @@ elif (( $+commands[lesspipe.sh] )); then
   LESSPIPE="lesspipe.sh"
 fi
 if (( $+LESSPIPE )); then
-  export LESSOPEN="|f=%s $LESSPIPE \$f"
+  export LESSOPEN="|f=%s; $LESSPIPE \$f"
   if (( $+commands[ifne] )); then
     IFNE="ifne"
     if (( $+commands[src-hilite-lesspipe.sh] )); then
@@ -104,8 +104,8 @@ fi
 if (( $+commands[scp] )); then
   alias scp='scp -r'
 fi
-if [ -f /usr/lib/google-cloud-sdk/completion.bash.inc ]; then
-  source /usr/lib/google-cloud-sdk/completion.bash.inc
+if [ -f /usr/share/google-cloud-sdk/completion.zsh.inc ]; then
+  source /usr/share/google-cloud-sdk/completion.zsh.inc
 fi
 if (( $+TILIX_ID )) && [ -f /etc/profile.d/vte-2.91.sh ]; then
   source /etc/profile.d/vte-2.91.sh
