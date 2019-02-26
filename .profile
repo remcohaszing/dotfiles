@@ -23,7 +23,14 @@ if [ -d "$HOME/.gem/ruby" ]; then
   done
 fi
 
+if [ -x /usr/libexec/java_home ]; then
+  JAVA_HOME="$(/usr/libexec/java_home)"
+else
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+fi
+if [ -d "$JAVA_HOME" ]; then
+  export JAVA_HOME
+fi
+
 export PATH
-export MOZ_USE_OMTC=1
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export QT_QPA_PLATFORMTHEME=qt5ct

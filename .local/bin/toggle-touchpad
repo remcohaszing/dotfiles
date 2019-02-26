@@ -1,22 +1,28 @@
 #!/bin/bash
 #
-# This script toggles a touch pad using xinput.
+# This script toggles a touch pad using gsettings.
 #
+SETTING=('org.gnome.desktop.peripherals.touchpad' 'send-events')
+OLD_STATE="$(gsettings get "${SETTING[@]}")"
+echo "Prevous state: $OLD_STATE"
 
-DEVICE='SynPS/2 Synaptics TouchPad'
 
-enabled=$(xinput list-props "$DEVICE" | awk '/^\tDevice Enabled \([0-9]+\):\t[01]/ {print $NF}')
-case $enabled in
-  0)
-    xinput enable "$DEVICE"
-    echo "$DEVICE enabled"
+case $OLD_STATE in
+  "'enabled'")
+    NEW_STATE='disabled'
     ;;
-  1)
-    xinput disable "$DEVICE"
-    echo "$DEVICE disabled"
+  "'disabled'")
+    NEW_STATE='disabled-on-external-mouse'
+    ;;
+  "'disabled-on-external-mouse'")
+    NEW_STATE='enabled'
     ;;
   *)
-    echo
-    xinput list --name-only
+    echo "Unhandled touchpad state: $OLD_STATE"
+    exit 1
     ;;
 esac
+
+
+gsettings set "${SETTING[@]}" "$NEW_STATE"
+echo "New state: $NEW_STATE"

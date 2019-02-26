@@ -16,6 +16,7 @@ import readline
 import rlcompleter  # noqa
 import shutil  # noqa
 import sys  # noqa
+import urllib  # noqa
 
 try:
     from unittest import mock

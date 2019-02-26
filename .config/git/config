@@ -2,6 +2,7 @@
     l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
     lb = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset' --branches
     wd = diff --word-diff=color
+    wip = commit --no-verify --message WIP
     x = clean -xdf -e /.vscode
 [clone]
     recurse-submodules = true
@@ -28,21 +29,28 @@
 [fetch]
     prune = true
     recurseSubmodules = true
+[grep]
+    lineNumber = true
 [merge]
     defaultToUpstream = true
-    tool = code
+    tool = mergetool
 [mergetool "code"]
     cmd = code --new-window --wait "$MERGED"
+[mergetool "mergetool"]
+    cmd = mergetool $LOCAL $REMOTE $BASE $MERGED
 [pager]
     branch = cat
     diff = diff-so-fancy | less
     grep = cat
     log = gitlogpipe | less
     show = diff-so-fancy | less
+    stash = false
     tag = cat
 [push]
     default = current
     followTags = true
+[rebase]
+    abbreviateCommands = true
 [tag]
     gpgSign = true
 [user]

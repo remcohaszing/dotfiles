@@ -1,2 +1,59 @@
 [
+  {
+    "key": "'",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "'"
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+'",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "\""
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "`",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "`"
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+9",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "("
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "[",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "["
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+[",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "{"
+    },
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+C",
+    "command": "editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  }
 ]

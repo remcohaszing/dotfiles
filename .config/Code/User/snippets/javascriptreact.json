@@ -1,0 +1,12 @@
+{
+  "import index.jsx": {
+    "prefix": "exp",
+    "body": "export { default } from './$1';",
+    "description": "Export a member from a sub path"
+  },
+  "<FormattedMessage />": {
+    "prefix": "fm",
+    "body": "<FormattedMessage {...messages.$1} />",
+    "description": "Create a <FormattedMessage /> component, given predefined messages."
+  }
+}

@@ -41,10 +41,25 @@
         "settings": {
           "foreground": "#ffff88"
         }
+      },
+      {
+        "scope": "markup.fenced_code.block.markdown",
+        "settings": {
+          "foreground": "#cfebea",
+        }
       }
     ]
   },
   "editor.wordWrapColumn": 180,
+  "emojisense.languages": {
+    "git-commit": true,
+    "javascript": true,
+    "markdown": true,
+    "plaintext": true,
+    "python": true,
+    "yaml": true,
+  },
+  "emojisense.unicodeCompletionsEnabled": true,
   "eslint.autoFixOnSave": true,
   "eslint.options": {
     "rules": {
@@ -57,15 +72,19 @@
   "extensions.autoUpdate": false,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
-    "**/Deliverfile": "ruby",
+    "main.workflow": "hcl"
   },
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
+    "**/.classpath": true,
     "**/.DS_Store": true,
-    "**/__pycache__": true
+    "**/.git": true,
+    "**/.factorypath": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/__pycache__": true,
+    "**/CVS": true
   },
   "files.trimFinalNewlines": true,
   "javascript.autoClosingTags": false,
@@ -75,33 +94,43 @@
   "javascript.validate.enable": false,
   "keyboard.dispatch": "keyCode",
   "markdown.extension.tableFormatter.enabled": false,
+  "markdown.extension.toc.updateOnSave": false,
   "prettier.requireConfig": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
+  "shellcheck.ignorePatterns": {
+    ".zshrc": true,
+    "**/*.zsh": true
+  },
   "solargraph.checkGemVersion": false,
-  "svg.preview.background": "transparent",
-  "templateGenerator.templatesPath": "/home/remco/.local/share/templates",
+  "stylelint.configOverrides": {
+    "ignoreFiles": "**/*.{js,jsx,md}"
+  },
+  "svg.preview.background": "black",
   "terminal.integrated.fontSize": 10,
   "typescript.autoClosingTags": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "vsicons.presets.foldersAllDefaultIcon": true,
   "window.menuBarVisibility": "toggle",
+  "window.titleBarStyle": "native",
+  "window.zoomLevel": 0,
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "editor.background": "#000000",
     "editor.lineHighlightBackground": "#000000",
+    "editorGutter.background": "#050505",
+    "editorWarning.foreground": "#ffb055",
     "gitDecoration.ignoredResourceForeground": "#666666",
+    "panel.background": "#000000",
+    "panel.border": "#222222",
     "sideBar.background": "#050505",
     "statusBar.background": "#080808",
-    "panel.background": "#000000",
-    "editorWarning.foreground": "#ffb055",
-    "panel.border": "#222222"
   },
   "workbench.colorTheme": "Blakai Theme",
   "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "workbench.iconTheme": "vscode-icons",
-  "window.zoomLevel": 0,
-  "vsicons.presets.foldersAllDefaultIcon": true,
-  "workbench.settings.editor": "json",
+  "workbench.settings.editor": "json"
 }
