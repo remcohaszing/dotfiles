@@ -3,13 +3,14 @@ readonly LOCAL="$1"
 readonly REMOTE="$2"
 readonly BASE="$3"
 readonly MERGED="$4"
+readonly GIT_ROOT="$(git rev-parse --show-toplevel)"
 
 if [[ "$MERGED" == yarn.lock ]]; then
   yarn
 elif [[ "$MERGED" == package-lock.json ]]; then
   npm install
 else
-  code --new-window --wait "$MERGED"
+  code --folder-uri "$GIT_ROOT" --new-window --wait "$MERGED"
 fi
 
 exit 1

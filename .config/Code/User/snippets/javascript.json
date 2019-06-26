@@ -1,0 +1,8 @@
+{
+	"sleep async": {
+		"prefix": "sleep",
+		"body": [
+			"await new Promise(resolve => setTimeout(resolve, 1000))"
+		]
+	}
+}

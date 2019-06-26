@@ -10,13 +10,13 @@ import datetime  # noqa
 import io  # noqa
 import json  # noqa
 import os
-#import pprint.pprint as pp
 import re  # noqa
 import readline
 import rlcompleter  # noqa
 import shutil  # noqa
 import sys  # noqa
 import urllib  # noqa
+from pprint import pprint
 
 try:
     from unittest import mock

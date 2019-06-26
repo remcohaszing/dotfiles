@@ -7,22 +7,13 @@ OLD_STATE="$(gsettings get "${SETTING[@]}")"
 echo "Prevous state: $OLD_STATE"
 
 
-case $OLD_STATE in
-  "'enabled'")
-    NEW_STATE='disabled'
-    ;;
-  "'disabled'")
-    NEW_STATE='disabled-on-external-mouse'
-    ;;
-  "'disabled-on-external-mouse'")
-    NEW_STATE='enabled'
-    ;;
-  *)
-    echo "Unhandled touchpad state: $OLD_STATE"
-    exit 1
-    ;;
-esac
+if [[ "$OLD_STATE" == "'enabled'" ]]; then
+  NEW_STATE='disabled'
+else
+  NEW_STATE='enabled'
+fi
 
 
 gsettings set "${SETTING[@]}" "$NEW_STATE"
+notify-send --icon keyboard "keyboard $NEW_STATE"
 echo "New state: $NEW_STATE"

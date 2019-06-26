@@ -11,8 +11,6 @@ ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
-
-
 export LESSHISTFILE="-"
 if (( $+commands[lesspipe] )); then
   LESSPIPE="lesspipe"
@@ -43,12 +41,14 @@ fpath+="$ZSH/plugins/yarn"
 
 plugins=(
   command-not-found
+  zsh-autosuggestions
 )
 
 setopt histignorespace
 source "$ZSH/oh-my-zsh.sh"
 autoload -U zmv
 PROMPT='%{$fg[green]%}%n@%m:%{$fg_bold[blue]%}%~ $(git_prompt_info)%{$reset_color%}%(!.#.$) '
+bindkey '^H' backward-kill-word
 
 if (( $+SSH_CONNECTION )); then
   export LANG=en_US.UTF-8
@@ -74,8 +74,17 @@ if [[ -d "$ANDROID_SDK_ROOT/build-tools" ]]; then
   fi
   unset ANDROID_BUILD_TOOLS
 fi
+
+if (( $+commands[doctl] )); then
+  source <(doctl completion zsh)
+fi
 if (( $+commands[kubectl] )); then
   source <(kubectl completion zsh)
+fi
+if (( $+commands[helm] )); then
+  export HELM_TLS_ENABLE=true
+  export TILLER_NAMESPACE=gitlab-managed-apps
+  source <(helm completion zsh)
 fi
 if (( $+commands[npm] )); then
   source <(npm completion)

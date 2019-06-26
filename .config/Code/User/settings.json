@@ -1,23 +1,21 @@
 {
-  "[python]": {
-    "editor.rulers": [
-      72,
-      80
-    ]
-  },
-  "[restructuredtext]": {
-    "editor.wordWrap": "bounded"
-  },
+  "breadcrumbs.enabled": false,
   "css.validate": false,
   "csv-preview.capitalizeHeaders": false,
+  "debug.console.fontSize": 10,
+  "debug.console.lineHeight": 13,
   "docker.showExplorer": false,
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
-  "editor.fontSize": 10,
+  "editor.fontFamily": "'ubuntu mono'",
+  "editor.fontSize": 12,
+  "editor.formatOnSave": false,
   "editor.minimap.enabled": false,
+  "editor.renderFinalNewline": true,
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
-    "textMateRules": [{
+    "textMateRules": [
+      {
         "scope": "markup.bold",
         "settings": {
           "fontStyle": "bold"
@@ -45,7 +43,7 @@
       {
         "scope": "markup.fenced_code.block.markdown",
         "settings": {
-          "foreground": "#cfebea",
+          "foreground": "#cfebea"
         }
       }
     ]
@@ -54,10 +52,13 @@
   "emojisense.languages": {
     "git-commit": true,
     "javascript": true,
+    "javascriptreact": true,
     "markdown": true,
     "plaintext": true,
     "python": true,
-    "yaml": true,
+    "typescript": true,
+    "typescriptreact": true,
+    "yaml": true
   },
   "emojisense.unicodeCompletionsEnabled": true,
   "eslint.autoFixOnSave": true,
@@ -66,13 +67,16 @@
       "no-debugger": "off"
     }
   },
+  "eslint.validate": ["javascript", "javascriptreact"],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
   "extensions.autoUpdate": false,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
-    "main.workflow": "hcl"
+    ".gcloudignore": "ignore",
+    "*.html": "html",
+    "*.mmd": "Mermaid",
   },
   "files.exclude": {
     "**/.classpath": true,
@@ -87,15 +91,19 @@
     "**/CVS": true
   },
   "files.trimFinalNewlines": true,
+  "html.format.enable": false,
   "javascript.autoClosingTags": false,
   "javascript.format.enable": false,
   "javascript.implicitProjectConfig.checkJs": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.validate.enable": false,
+  "json.format.enable": false,
   "keyboard.dispatch": "keyCode",
   "markdown.extension.tableFormatter.enabled": false,
   "markdown.extension.toc.updateOnSave": false,
+  "nginx-conf-hint.syntax": "sublime",
   "prettier.requireConfig": true,
+  "prettier.stylelintIntegration": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
@@ -103,15 +111,14 @@
     ".zshrc": true,
     "**/*.zsh": true
   },
-  "solargraph.checkGemVersion": false,
   "stylelint.configOverrides": {
-    "ignoreFiles": "**/*.{js,jsx,md}"
+    "ignoreFiles": "**/*.{js,jsx,md,vue}"
   },
+  "terminal.integrated.fontSize": 12,
   "svg.preview.background": "black",
-  "terminal.integrated.fontSize": 10,
   "typescript.autoClosingTags": false,
-  "vsicons.dontShowNewVersionMessage": true,
-  "vsicons.presets.foldersAllDefaultIcon": true,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
@@ -125,12 +132,25 @@
     "panel.background": "#000000",
     "panel.border": "#222222",
     "sideBar.background": "#050505",
-    "statusBar.background": "#080808",
+    "statusBar.background": "#080808"
   },
   "workbench.colorTheme": "Blakai Theme",
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
-  "workbench.settings.editor": "json"
+  "workbench.settings.editor": "json",
+  "yaml.format.enable": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.rulers": [72, 80]
+  },
+  "[restructuredtext]": {
+    "editor.wordWrap": "bounded"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

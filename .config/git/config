@@ -1,6 +1,7 @@
 [alias]
     l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
     lb = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset' --branches
+    pb = ! git branch --merged=master | grep -v master | xargs git branch -d
     wd = diff --word-diff=color
     wip = commit --no-verify --message WIP
     x = clean -xdf -e /.vscode
@@ -20,7 +21,6 @@
     autocrlf = input
     editor = vim
     eol = lf
-    excludesfile = ~/.config/git/ignore
     whitespace = cr-at-eol,tab-in-indent,trailing-space
 [credential]
     helper = cache
@@ -34,6 +34,8 @@
 [merge]
     defaultToUpstream = true
     tool = mergetool
+[mergetool]
+    keepBackup = false
 [mergetool "code"]
     cmd = code --new-window --wait "$MERGED"
 [mergetool "mergetool"]
