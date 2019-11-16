@@ -4,8 +4,7 @@
   "csv-preview.capitalizeHeaders": false,
   "debug.console.fontSize": 10,
   "debug.console.lineHeight": 13,
-  "docker.showExplorer": false,
-  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingBrackets": "languageDefined",
   "editor.autoClosingQuotes": "never",
   "editor.fontFamily": "'ubuntu mono'",
   "editor.fontSize": 12,
@@ -74,9 +73,7 @@
   "extensions.autoUpdate": false,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
-    ".gcloudignore": "ignore",
-    "*.html": "html",
-    "*.mmd": "Mermaid",
+    "*.mmd": "Mermaid"
   },
   "files.exclude": {
     "**/.classpath": true,
@@ -102,8 +99,6 @@
   "markdown.extension.tableFormatter.enabled": false,
   "markdown.extension.toc.updateOnSave": false,
   "nginx-conf-hint.syntax": "sublime",
-  "prettier.requireConfig": true,
-  "prettier.stylelintIntegration": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
   "shellcheck.disableVersionCheck": true,
@@ -111,6 +106,7 @@
     ".zshrc": true,
     "**/*.zsh": true
   },
+  "stylelint.autoFixOnSave": true,
   "stylelint.configOverrides": {
     "ignoreFiles": "**/*.{js,jsx,md,vue}"
   },
@@ -119,6 +115,18 @@
   "typescript.autoClosingTags": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "vsicons.associations.files": [
+    {
+      "icon": "appsemble",
+      "format": "svg",
+      "extensions": [
+        ".appsemblerc.js",
+        ".appsemblerc.json",
+        ".appsemblerc.yaml",
+        "appsemble.config.js"
+      ]
+    }
+  ],
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
@@ -136,9 +144,10 @@
   },
   "workbench.colorTheme": "Blakai Theme",
   "workbench.editor.enablePreview": false,
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false,
   "workbench.settings.editor": "json",
   "yaml.format.enable": false,
   "[html]": {

@@ -12,6 +12,7 @@ fi
 ANDROID_SDK_ROOT="$HOME/.local/share/android-sdk"
 if [ -d "$ANDROID_SDK_ROOT" ]; then
   export ANDROID_SDK_ROOT
+  export ANDROID_HOME="$ANDROID_SDK_ROOT"
   PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
   PATH="$ANDROID_SDK_ROOT/tools:$PATH"
   PATH="$ANDROID_SDK_ROOT/tools/bin:$PATH"
@@ -26,11 +27,12 @@ fi
 if [ -x /usr/libexec/java_home ]; then
   JAVA_HOME="$(/usr/libexec/java_home)"
 else
-  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  JAVA_HOME=/usr/lib/jvm/default-java
 fi
 if [ -d "$JAVA_HOME" ]; then
   export JAVA_HOME
 fi
 
 export PATH
+export QT_IM_MODULE=ibus
 export QT_QPA_PLATFORMTHEME=qt5ct

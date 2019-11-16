@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
+LOCAL_PREFIX="$HOME/.local"
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_CONFIG_HOME="$HOME/.config"
-XDG_DATA_HOME="$HOME/.local/share"
+XDG_DATA_HOME="$LOCAL_PREFIX/share"
 
 ZSH="$XDG_DATA_HOME/oh-my-zsh"
 HISTFILE="$XDG_CACHE_HOME/zsh/history"
@@ -10,6 +11,9 @@ ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
+export GOPATH="$LOCAL_PREFIX"
+export NODE_EXTRA_CA_CERTS="$XDG_DATA_HOME/mkcert/rootCA.pem"
+export NODE_OPTIONS='--experimental-repl-await' # -r esm'
 
 export LESSHISTFILE="-"
 if (( $+commands[lesspipe] )); then
@@ -40,6 +44,7 @@ fpath+="$ZSH/plugins/pip"
 fpath+="$ZSH/plugins/yarn"
 
 plugins=(
+  colored-man-pages
   command-not-found
   zsh-autosuggestions
 )
@@ -70,7 +75,7 @@ fi
 if [[ -d "$ANDROID_SDK_ROOT/build-tools" ]]; then
   ANDROID_BUILD_TOOLS="$ANDROID_SDK_ROOT/build-tools/$(ls "$ANDROID_SDK_ROOT/build-tools" | head -1)"
   if [[ -d "$ANDROID_BUILD_TOOLS" ]]; then
-    export PATH="$ANDROID_BUILD_TOOLS:$PATH"
+    path+="$ANDROID_BUILD_TOOLS"
   fi
   unset ANDROID_BUILD_TOOLS
 fi
@@ -86,6 +91,9 @@ if (( $+commands[helm] )); then
   export TILLER_NAMESPACE=gitlab-managed-apps
   source <(helm completion zsh)
 fi
+if (( $+commands[ip] )); then
+  alias ip='ip -c'
+fi
 if (( $+commands[npm] )); then
   source <(npm completion)
 fi
@@ -94,6 +102,9 @@ if (( $+commands[pew] )); then
 fi
 if (( $+commands[pipenv] )); then
   source <(pipenv --completion)
+fi
+if (( $+commands[thefuck] )); then
+  source <(thefuck --alias)
 fi
 if (( $+commands[xclip] )); then
   alias xclip='xclip -selection clipboard'

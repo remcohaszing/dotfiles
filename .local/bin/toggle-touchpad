@@ -15,5 +15,5 @@ fi
 
 
 gsettings set "${SETTING[@]}" "$NEW_STATE"
-notify-send --icon keyboard "keyboard $NEW_STATE"
+notify-send --icon keyboard "touchpad $NEW_STATE"
 echo "New state: $NEW_STATE"
