@@ -6,9 +6,15 @@
   "debug.console.lineHeight": 13,
   "editor.autoClosingBrackets": "languageDefined",
   "editor.autoClosingQuotes": "never",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.foldingHighlight": false,
   "editor.fontFamily": "'ubuntu mono'",
   "editor.fontSize": 12,
   "editor.formatOnSave": false,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
   "editor.minimap.enabled": false,
   "editor.renderFinalNewline": true,
   "editor.tabSize": 2,
@@ -48,6 +54,9 @@
     ]
   },
   "editor.wordWrapColumn": 180,
+  "emmet.excludeLanguages": [
+    "typescriptreact"
+  ],
   "emojisense.languages": {
     "git-commit": true,
     "javascript": true,
@@ -60,13 +69,22 @@
     "yaml": true
   },
   "emojisense.unicodeCompletionsEnabled": true,
-  "eslint.autoFixOnSave": true,
   "eslint.options": {
     "rules": {
       "no-debugger": "off"
     }
   },
-  "eslint.validate": ["javascript", "javascriptreact"],
+  "eslint.probe": [
+    "html",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.format.enable": true,
+  "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
@@ -106,12 +124,8 @@
     ".zshrc": true,
     "**/*.zsh": true
   },
-  "stylelint.autoFixOnSave": true,
-  "stylelint.configOverrides": {
-    "ignoreFiles": "**/*.{js,jsx,md,vue}"
-  },
+  "svg.preview.background": "transparent",
   "terminal.integrated.fontSize": 12,
-  "svg.preview.background": "black",
   "typescript.autoClosingTags": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
@@ -144,20 +158,36 @@
   },
   "workbench.colorTheme": "Blakai Theme",
   "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.labelFormat": "short",
+  "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.settings.editor": "json",
   "yaml.format.enable": false,
+  "vsicons.dontShowNewVersionMessage": true,
+
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.rulers": [72, 80]
+    "editor.rulers": [
+      72,
+      80
+    ]
   },
   "[restructuredtext]": {
     "editor.wordWrap": "bounded"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

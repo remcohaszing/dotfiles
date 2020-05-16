@@ -16,6 +16,7 @@
     status = auto
     ui = auto
 [commit]
+    cleanup = scissors
     gpgSign = true
 [core]
     autocrlf = input
@@ -36,8 +37,6 @@
     tool = mergetool
 [mergetool]
     keepBackup = false
-[mergetool "code"]
-    cmd = code --new-window --wait "$MERGED"
 [mergetool "mergetool"]
     cmd = mergetool $LOCAL $REMOTE $BASE $MERGED
 [pager]

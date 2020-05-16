@@ -1,2 +1,22 @@
+/.config/Code/.*
+/.config/Code/Backups/
+/.config/Code/Cache/
+/.config/Code/CachedConfigurations/
+/.config/Code/CachedData/
+/.config/Code/CachedExtensions/
+/.config/Code/Code Cache/
+/.config/Code/Cookies
+/.config/Code/Cookies-journal
+/.config/Code/GPUCache/
+/.config/Code/languagepacks.json
+/.config/Code/Local Storage/
+/.config/Code/logs/
+/.config/Code/machineid
+/.config/Code/Network Persistent State
+/.config/Code/Preferences
+/.config/Code/rapid_render.json
+/.config/Code/Session Storage/
+/.config/Code/storage.json
+/.config/Code/TransportSecurity
 /.config/Code/User/globalStorage/
 /.config/Code/User/workspaceStorage/

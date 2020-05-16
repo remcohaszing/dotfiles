@@ -10,7 +10,7 @@ if [[ "$MERGED" == yarn.lock ]]; then
 elif [[ "$MERGED" == package-lock.json ]]; then
   npm install
 else
-  code --folder-uri "$GIT_ROOT" --new-window --wait "$MERGED"
+  code --folder-uri "file://$GIT_ROOT" --new-window --wait "$MERGED"
 fi
 
 exit 1

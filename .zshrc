@@ -12,8 +12,10 @@ ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 export GOPATH="$LOCAL_PREFIX"
+export NODE_PATH="$LOCAL_PREFIX/lib/node_modules"
 export NODE_EXTRA_CA_CERTS="$XDG_DATA_HOME/mkcert/rootCA.pem"
-export NODE_OPTIONS='--experimental-repl-await' # -r esm'
+export NODE_OPTIONS='--experimental-repl-await'
+export BLUEBIRD_LONG_STACK_TRACES=1
 
 export LESSHISTFILE="-"
 if (( $+commands[lesspipe] )); then
@@ -46,9 +48,12 @@ fpath+="$ZSH/plugins/yarn"
 plugins=(
   colored-man-pages
   command-not-found
+  gitfast
+  poetry
   zsh-autosuggestions
 )
 
+alias strip-colors="sed 's/\\x1b\\[[0-9;]*m//g'"
 setopt histignorespace
 source "$ZSH/oh-my-zsh.sh"
 autoload -U zmv
@@ -80,6 +85,15 @@ if [[ -d "$ANDROID_SDK_ROOT/build-tools" ]]; then
   unset ANDROID_BUILD_TOOLS
 fi
 
+function chpwd() {
+  if [ -d .git ]; then
+    git status --short
+  fi
+}
+
+if (( $+commands[code] )); then
+  alias code='code --goto'
+fi
 if (( $+commands[doctl] )); then
   source <(doctl completion zsh)
 fi
@@ -87,8 +101,6 @@ if (( $+commands[kubectl] )); then
   source <(kubectl completion zsh)
 fi
 if (( $+commands[helm] )); then
-  export HELM_TLS_ENABLE=true
-  export TILLER_NAMESPACE=gitlab-managed-apps
   source <(helm completion zsh)
 fi
 if (( $+commands[ip] )); then
