@@ -11,6 +11,8 @@ ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
+PROMPT_EOL_MARK='🚫'
+export LESS='-FR'
 export GOPATH="$LOCAL_PREFIX"
 export NODE_PATH="$LOCAL_PREFIX/lib/node_modules"
 export NODE_EXTRA_CA_CERTS="$XDG_DATA_HOME/mkcert/rootCA.pem"
@@ -48,7 +50,7 @@ fpath+="$ZSH/plugins/yarn"
 plugins=(
   colored-man-pages
   command-not-found
-  gitfast
+  git
   poetry
   zsh-autosuggestions
 )
@@ -89,6 +91,19 @@ function chpwd() {
   if [ -d .git ]; then
     git status --short
   fi
+}
+
+function precmd() {
+  # Add node_modules/.bin to path
+  path=( ${path[@]:#*node_modules*} )
+  local p="$(pwd)"
+  while [[ "$p" != '/' ]]; do
+    if [[ -d "$p/node_modules/.bin" ]]; then
+      path+=("$p/node_modules/.bin")
+    fi
+    p="$(dirname "$p")"
+  done
+  typeset -U path
 }
 
 if (( $+commands[code] )); then

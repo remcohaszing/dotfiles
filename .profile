@@ -12,6 +12,11 @@ fi
 if [ -d "$JAVA_HOME" ]; then
   export JAVA_HOME
 fi
+ANDROID_SDK="$HOME/.local/share/android-sdk"
+if [ -d "$ANDROID_SDK" ]; then
+  PATH="$ANDROID_SDK/tools/bin:$PATH"
+  PATH="$ANDROID_SDK/platform-tools:$PATH"
+fi
 
 export PATH
 export QT_QPA_PLATFORMTHEME=qt5ct

@@ -1,7 +1,10 @@
 [alias]
-    l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset'
+    default-branch = ! git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    get-merged-branches = ! git branch --merged="$(git default-branch)" | grep -vP "\\\\s$(git default-branch)$" | grep -vP '^\\*'
+    l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai] (%ce)%n%n  %s%n%Creset'
     lb = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset' --branches
-    pb = ! git branch --merged=master | grep -v master | xargs git branch -d
+    pb = ! git get-merged-branches | xargs git branch -D
+    summary = log --abbrev-commit --pretty=oneline --first-parent
     wd = diff --word-diff=color
     wip = commit --no-verify --message WIP
     x = clean -xdf -e /.vscode
@@ -25,6 +28,9 @@
     whitespace = cr-at-eol,tab-in-indent,trailing-space
 [credential]
     helper = cache
+[delta]
+    line-numbers = true
+    hyperlinks = false
 [diff "image"]
     command = ~/.config/git/bin/imgdiff
 [fetch]
@@ -32,6 +38,8 @@
     recurseSubmodules = true
 [grep]
     lineNumber = true
+[init]
+    defaultBranch = main
 [merge]
     defaultToUpstream = true
     tool = mergetool
@@ -41,12 +49,14 @@
     cmd = mergetool $LOCAL $REMOTE $BASE $MERGED
 [pager]
     branch = cat
-    diff = diff-so-fancy | less
+    diff = delta
     grep = cat
-    log = gitlogpipe | less
-    show = diff-so-fancy | less
+    log = gitlogpipe | less -F
+    show = delta
     stash = false
-    tag = cat
+    tag = less -F
+[pull]
+    rebase = true
 [push]
     default = current
     followTags = true
@@ -54,6 +64,7 @@
     abbreviateCommands = true
 [tag]
     gpgSign = true
+    sort = -version:refname
 [user]
     email = remcohaszing@gmail.com
     name = Remco Haszing

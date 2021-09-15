@@ -57,8 +57,16 @@
     "command": "editor.action.clipboardCopyAction"
   },
   {
+    "key": "ctrl+shift+V",
+    "command": "editor.action.clipboardPasteAction"
+  },
+  {
     "key": "ctrl+shift+right",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
   }
 ]

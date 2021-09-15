@@ -1,22 +1,27 @@
 {
   "breadcrumbs.enabled": false,
+  "cloudcode.minikubeStatusBar": false,
   "css.validate": false,
   "csv-preview.capitalizeHeaders": false,
   "debug.console.fontSize": 10,
   "debug.console.lineHeight": 13,
-  "editor.autoClosingBrackets": "languageDefined",
+  "debug.onTaskErrors": "debugAnyway",
+  "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
+  "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
   "editor.foldingHighlight": false,
-  "editor.fontFamily": "'ubuntu mono'",
-  "editor.fontSize": 12,
+  "editor.fontFamily": "monospace",
+  "editor.fontSize": 11,
   "editor.formatOnSave": false,
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
   "editor.minimap.enabled": false,
   "editor.renderFinalNewline": true,
+  "editor.renderWhitespace": "trailing",
+  "editor.snippetSuggestions": "none",
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -53,7 +58,6 @@
       }
     ]
   },
-  "editor.wordWrapColumn": 180,
   "emmet.excludeLanguages": [
     "typescriptreact"
   ],
@@ -74,23 +78,15 @@
       "no-debugger": "off"
     }
   },
-  "eslint.probe": [
-    "html",
-    "javascript",
-    "javascriptreact",
-    "markdown",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
   "eslint.format.enable": true,
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
   "extensions.autoUpdate": false,
-  "extensions.showRecommendationsOnlyOnDemand": true,
+  "extensions.ignoreRecommendations": true,
   "files.associations": {
+    "*.desktop": "ini",
     "*.mmd": "Mermaid"
   },
   "files.exclude": {
@@ -105,45 +101,54 @@
     "**/__pycache__": true,
     "**/CVS": true
   },
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/*.code-search": true,
+    "**/.git": true,
+    "*.map": true
+  },
   "files.trimFinalNewlines": true,
+  "gitlab.showIssueLinkOnStatusBar": false,
+  "gitlab.showMrStatusOnStatusBar": false,
+  "gitlab.showStatusBarLinks": false,
+  "gitlab.showProjectMergeRequests": false,
   "html.format.enable": false,
   "javascript.autoClosingTags": false,
   "javascript.format.enable": false,
-  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.preferences.quoteStyle": "single",
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.validate.enable": false,
   "json.format.enable": false,
+  "json.schemaDownload.enable": true,
   "keyboard.dispatch": "keyCode",
   "markdown.extension.tableFormatter.enabled": false,
   "markdown.extension.toc.updateOnSave": false,
   "nginx-conf-hint.syntax": "sublime",
+  "prettier.requireConfig": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
+  "security.workspace.trust.untrustedFiles": "open",
   "shellcheck.disableVersionCheck": true,
   "shellcheck.ignorePatterns": {
     ".zshrc": true,
     "**/*.zsh": true
   },
+  "stylelint.reportNeedlessDisables": true,
+  "yaml.maxItemsComputed": 1000,
+  "stylelint.validate": ["css", "less", "sass", "scss"],
   "svg.preview.background": "transparent",
   "terminal.integrated.fontSize": 12,
   "typescript.autoClosingTags": false,
-  "typescript.disableAutomaticTypeAcquisition": true,
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "vsicons.associations.files": [
-    {
-      "icon": "appsemble",
-      "format": "svg",
-      "extensions": [
-        ".appsemblerc.js",
-        ".appsemblerc.json",
-        ".appsemblerc.yaml",
-        "appsemble.config.js"
-      ]
-    }
-  ],
+  "typescript.format.enable": false,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "update.mode": "none",
+  "vsicons.dontShowNewVersionMessage": true,
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "native",
-  "window.zoomLevel": 0,
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "editor.background": "#000000",
@@ -162,34 +167,77 @@
   "workbench.editor.labelFormat": "short",
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.editorAssociations": {
+    "*.ico": "imagePreview.previewEditor",
+    "*.png": "imagePreview.previewEditor",
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.settings.editor": "json",
   "yaml.format.enable": false,
-  "vsicons.dontShowNewVersionMessage": true,
 
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[python]": {
-    "editor.rulers": [
-      72,
-      80
-    ]
+    "editor.rulers": [72, 80]
   },
   "[restructuredtext]": {
     "editor.wordWrap": "bounded"
   },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
   "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[yaml]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

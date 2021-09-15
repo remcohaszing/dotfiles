@@ -4,9 +4,14 @@
 /.config/Code/CachedConfigurations/
 /.config/Code/CachedData/
 /.config/Code/CachedExtensions/
+/.config/Code/CachedExtensionVSIXs/
 /.config/Code/Code Cache/
+/.config/Code/code.lock
 /.config/Code/Cookies
 /.config/Code/Cookies-journal
+/.config/Code/Crash Reports/
+/.config/Code/databases/
+/.config/Code/exthost Crash Reports/
 /.config/Code/GPUCache/
 /.config/Code/languagepacks.json
 /.config/Code/Local Storage/
@@ -14,7 +19,10 @@
 /.config/Code/machineid
 /.config/Code/Network Persistent State
 /.config/Code/Preferences
+/.config/Code/QuotaManager
+/.config/Code/QuotaManager-journal
 /.config/Code/rapid_render.json
+/.config/Code/Service Worker/
 /.config/Code/Session Storage/
 /.config/Code/storage.json
 /.config/Code/TransportSecurity
