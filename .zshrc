@@ -148,3 +148,8 @@ fi
 if [ -f "$XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
   source "$XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
+if [ -d "$XDG_DATA_HOME/completion" ]; then
+  for file in "$XDG_DATA_HOME/completion/"*; do
+    source "$file"
+  done
+fi

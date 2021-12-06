@@ -4,6 +4,7 @@ set autoindent
 set expandtab
 set tabstop=4
 set colorcolumn=80
+"set mouse=a
 set ruler
 " Make backspace behave like other editors
 set backspace=2
@@ -23,14 +24,6 @@ highlight DiffDelete cterm=bold ctermbg=88
 highlight DiffChange            ctermbg=17
 highlight DiffText   cterm=bold ctermbg=12
 
-" Set nosetests alias
-command Nose ! nosetests
-abbrev nose Nose
-
-au BufReadPost .eslintrc set filetype=yaml
-
-execute pathogen#infect()
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -39,3 +32,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'editorconfig/editorconfig-vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+call plug#end()

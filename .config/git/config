@@ -1,3 +1,5 @@
+[advice]
+    skippedCherryPicks = false
 [alias]
     default-branch = ! git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     get-merged-branches = ! git branch --merged="$(git default-branch)" | grep -vP "\\\\s$(git default-branch)$" | grep -vP '^\\*'
@@ -30,7 +32,9 @@
     helper = cache
 [delta]
     line-numbers = true
+    hunk-header-style = file line-number
     hyperlinks = false
+    relative-paths = true
 [diff "image"]
     command = ~/.config/git/bin/imgdiff
 [fetch]

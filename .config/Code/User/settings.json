@@ -18,6 +18,7 @@
   "editor.formatOnSave": false,
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
   "editor.renderFinalNewline": true,
   "editor.renderWhitespace": "trailing",
@@ -58,9 +59,7 @@
       }
     ]
   },
-  "emmet.excludeLanguages": [
-    "typescriptreact"
-  ],
+  "emmet.excludeLanguages": ["typescriptreact"],
   "emojisense.languages": {
     "git-commit": true,
     "javascript": true,
@@ -73,11 +72,7 @@
     "yaml": true
   },
   "emojisense.unicodeCompletionsEnabled": true,
-  "eslint.options": {
-    "rules": {
-      "no-debugger": "off"
-    }
-  },
+  "eslint.codeActionsOnSave.rules": ["!no-debugger", "*"],
   "eslint.format.enable": true,
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
@@ -130,6 +125,7 @@
   "prettier.requireConfig": true,
   "python.linting.pylintEnabled": false,
   "python.venvPath": "~/.local/share/virtualenvs",
+  "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
   "shellcheck.disableVersionCheck": true,
   "shellcheck.ignorePatterns": {
@@ -137,7 +133,6 @@
     "**/*.zsh": true
   },
   "stylelint.reportNeedlessDisables": true,
-  "yaml.maxItemsComputed": 1000,
   "stylelint.validate": ["css", "less", "sass", "scss"],
   "svg.preview.background": "transparent",
   "terminal.integrated.fontSize": 12,
@@ -180,7 +175,7 @@
 
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
