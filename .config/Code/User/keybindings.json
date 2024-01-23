@@ -48,10 +48,20 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "F2",
+    "key": "shift+F2",
     "command": "fileutils.renameFile",
     "when": "editorTextFocus && !editorReadonly"
   },
+  {
+    "key": "shift+F2",
+    "command": "fileutils.renameFile",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+F2",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  }
   {
     "key": "ctrl+shift+C",
     "command": "editor.action.clipboardCopyAction"
