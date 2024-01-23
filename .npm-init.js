@@ -23,11 +23,10 @@ module.exports = {
   },
   devDependencies: {
     eslint: '^8.0.0',
-    'eslint-config-remcohaszing': '^8.0.0',
-    prettier: '^8.0.0',
-    typescript: '^4.0.0',
-  },
-  engines: {
-    node: '>=14.0.0'
+    'eslint-config-remcohaszing': '^10.0.0',
+    prettier: '^3.0.0',
+    'remark-cli': '^11.0.0',
+    'remark-preset-remcohaszing': '^2.0.0',
+    typescript: '^5.0.0',
   }
 }
