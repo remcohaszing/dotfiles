@@ -2,3 +2,4 @@
 !/.config/Code/User/settings/snippets/
 !/.config/Code/User/settings/*.json
 /.vim/plugged/
+/.vim/.netrwhist
