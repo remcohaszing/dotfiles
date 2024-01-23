@@ -1,15 +1,17 @@
 [advice]
     skippedCherryPicks = false
 [alias]
+    cl = log --pretty=oneline --graph --abbrev-commit
     default-branch = ! git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     get-merged-branches = ! git branch --merged="$(git default-branch)" | grep -vP "\\\\s$(git default-branch)$" | grep -vP '^\\*'
-    l = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai] (%ce)%n%n  %s%n%Creset'
-    lb = log --graph --decorate --pretty=format:'%C(auto)%G? %H %d%n%an <%ae> [%ai]%n%n  %s%n%Creset' --branches
+    l = log --graph --decorate --pretty=format:'%C(auto)%G? %h %s %d%n%an <%ce> [%ai]%n%Creset'
+    lb = l --branches
     pb = ! git get-merged-branches | xargs git branch -D
     summary = log --abbrev-commit --pretty=oneline --first-parent
     wd = diff --word-diff=color
     wip = commit --no-verify --message WIP
-    x = clean -xdf -e /.vscode
+    x = clean -xdf -e /.vscode -e /.env* -e /apps/*/.env*
+    xn = x -e node_modules/
 [clone]
     recurse-submodules = true
 [color]
@@ -34,9 +36,13 @@
     line-numbers = true
     hunk-header-style = file line-number
     hyperlinks = false
+    hyperlinks-file-link-format = "file://{path}#L{line}"
     relative-paths = true
+    tabs = 2
+[diff]
+    orderFile = ~/.config/git/orderfile
 [diff "image"]
-    command = ~/.config/git/bin/imgdiff
+    ; command = ~/.config/git/bin/imgdiff
 [fetch]
     prune = true
     recurseSubmodules = true
@@ -64,6 +70,7 @@
 [push]
     default = current
     followTags = true
+    autoSetupRemote = true
 [rebase]
     abbreviateCommands = true
 [tag]
@@ -72,3 +79,5 @@
 [user]
     email = remcohaszing@gmail.com
     name = Remco Haszing
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
