@@ -10,14 +10,10 @@ ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/compdump"
 ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="risto"
 CASE_SENSITIVE="true"
-DISABLE_AUTO_UPDATE="true"
 PROMPT_EOL_MARK='🚫'
-export LESS='-FR'
+export LESS='-FR -x2'
 export GOPATH="$LOCAL_PREFIX"
-export NODE_PATH="$LOCAL_PREFIX/lib/node_modules"
 export NODE_EXTRA_CA_CERTS="$XDG_DATA_HOME/mkcert/rootCA.pem"
-export NODE_OPTIONS='--experimental-repl-await'
-export BLUEBIRD_LONG_STACK_TRACES=1
 
 export LESSHISTFILE="-"
 if (( $+commands[lesspipe] )); then
@@ -40,10 +36,11 @@ if (( $+LESSPIPE )); then
   fi
 fi
 
+zstyle ':omz:update' mode disabled
+
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 fpath+="$ZSH/plugins/adb"
 fpath+="$ZSH/plugins/docker"
-fpath+="$ZSH/plugins/docker-compose"
 fpath+="$ZSH/plugins/pip"
 fpath+="$ZSH/plugins/yarn"
 
@@ -51,6 +48,8 @@ plugins=(
   colored-man-pages
   command-not-found
   git
+  history-substring-search
+  node-bin
   poetry
   zsh-autosuggestions
 )
@@ -60,25 +59,11 @@ setopt histignorespace
 source "$ZSH/oh-my-zsh.sh"
 autoload -U zmv
 PROMPT='%{$fg[green]%}%n@%m:%{$fg_bold[blue]%}%~ $(git_prompt_info)%{$reset_color%}%(!.#.$) '
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
 bindkey '^H' backward-kill-word
+tabs 2
 
-if (( $+SSH_CONNECTION )); then
-  export LANG=en_US.UTF-8
-  export LC_ADDRESS="$LANG"
-  export LC_ALL="$LANG"
-  export LC_CTYPE="$LANG"
-  export LC_IDENTIFICATION="$LANG"
-  export LC_MEASUREMENT="$LANG"
-  export LC_MONETARY="$LANG"
-  export LC_NAME="$LANG"
-  export LC_NUMERIC="$LANG"
-  export LC_PAPER="$LANG"
-  export LC_TELEPHONE="$LANG"
-  export LC_TIME="$LANG"
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    security unlock-keychain "$HOME/Library/Keychains/login.keychain"
-  fi
-fi
 if [[ -d "$ANDROID_SDK_ROOT/build-tools" ]]; then
   ANDROID_BUILD_TOOLS="$ANDROID_SDK_ROOT/build-tools/$(ls "$ANDROID_SDK_ROOT/build-tools" | head -1)"
   if [[ -d "$ANDROID_BUILD_TOOLS" ]]; then
@@ -93,19 +78,16 @@ function chpwd() {
   fi
 }
 
-function precmd() {
-  # Add node_modules/.bin to path
-  path=( ${path[@]:#*node_modules*} )
-  local p="$(pwd)"
-  while [[ "$p" != '/' ]]; do
-    if [[ -d "$p/node_modules/.bin" ]]; then
-      path+=("$p/node_modules/.bin")
-    fi
-    p="$(dirname "$p")"
-  done
-  typeset -U path
+function _print_status() {
+  local code=$?
+  if [ $code -ne 0 ] && [ $code -ne 130 ] && [ $code -ne 141 ]; then
+    echo "Exit code: \u001b[31m$code\u001b[0m"
+  fi
 }
 
+precmd_functions+=(_print_status)
+
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 if (( $+commands[code] )); then
   alias code='code --goto'
 fi
@@ -127,9 +109,6 @@ fi
 if (( $+commands[pew] )); then
   source "$(pew shell_config)"
 fi
-if (( $+commands[pipenv] )); then
-  source <(pipenv --completion)
-fi
 if (( $+commands[thefuck] )); then
   source <(thefuck --alias)
 fi
@@ -139,8 +118,14 @@ fi
 if (( $+commands[scp] )); then
   alias scp='scp -r'
 fi
+if (( $+commands[xdg-open] )); then
+  alias open='xdg-open'
+fi
 if [ -f /usr/share/google-cloud-sdk/completion.zsh.inc ]; then
   source /usr/share/google-cloud-sdk/completion.zsh.inc
+fi
+if [[ -f "$XDG_CONFIG_HOME/tabtab/zsh/__tabtab.zsh" ]]; then
+  source "$XDG_CONFIG_HOME/tabtab/zsh/__tabtab.zsh"
 fi
 if (( $+TILIX_ID )) && [ -f /etc/profile.d/vte-2.91.sh ]; then
   source /etc/profile.d/vte-2.91.sh
