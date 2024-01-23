@@ -5,10 +5,12 @@ BASE="$3"
 MERGED="$4"
 GIT_ROOT="$(git rev-parse --show-toplevel)"
 
-if [[ "$MERGED" == yarn.lock ]]; then
-  yarn
-elif [[ "$MERGED" == package-lock.json ]]; then
+if [[ "$MERGED" == package-lock.json ]]; then
   npm install
+elif [[ "$MERGED" == pnpm-lock.yaml ]]; then
+  pnpm install
+elif [[ "$MERGED" == yarn.lock ]]; then
+  yarn
 else
   code --folder-uri "file://$GIT_ROOT" --new-window --wait --merge "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
 fi
